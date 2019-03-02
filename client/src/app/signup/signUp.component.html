@@ -1,0 +1,13 @@
+<div class="rounded" class="modal-body">
+  <h1>Sign up</h1>
+  <h3>Họ và tên</h3><input class="form-control" [(ngModel)]="name" id="ex1" type="text" placeholder="name" >
+  <h3>Email</h3><input class="form-control" [(ngModel)]="email" id="ex1" type="text" placeholder="example@gmail.com">
+  <h3>Mật khẩu</h3><input class="form-control" [(ngModel)]="password" id="ex1" type="text" placeholder="password">
+  <h3>Xác nhận mật khẩu</h3><input class="form-control" [(ngModel)]="comfirm" id="ex1" type="text" placeholder="confirm">
+  <h3></h3><button type="button" (click)="signUp()" data-dismiss="modal" class="btn btn-primary">Save changes</button>
+</div>
+
+<!-- <div class="modal-footer"> -->
+  <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
+  
+<!-- </div> -->
