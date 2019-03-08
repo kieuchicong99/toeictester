@@ -6,19 +6,29 @@ const app = express()
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended : false}))
 
-app.post('/api/sign-up', function (req, res) {
+app.post('/api/sign-up', (req, res)=>{
   let groceryServiceObj = new groceryService(req, res)
   groceryServiceObj.signUp()
 })
 
-app.post('/api/sign-in', function (req, res) {
+app.post('/api/sign-in', (req, res)=>{
   let groceryServiceObj = new groceryService(req, res);
   groceryServiceObj.getUserById()
 })
 
-app.get('/api/get-all-user', function (req, res) {
+app.get('/api/get-all-user', (req, res)=>{
   let groceryServiceObj = new groceryService(req, res)
   groceryServiceObj.getAllUser()
+})
+
+app.get('/api/get-all-user', (req, res)=>{
+  let groceryServiceObj = new groceryService(req, res)
+  groceryServiceObj.getAllUser()
+})
+
+app.get('/api/get-user/:id', (req, res, id)=>{
+  let groceryServiceObj = new groceryService(req, res)
+  groceryServiceObj.getUserById(id)
 })
 
 app.listen(3000, function () {

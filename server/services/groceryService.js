@@ -72,33 +72,20 @@ class GroceryService {
 			})
 		}
 	}
-	getUserById() {
+	getUserById(pas) {
 		let self = this;
-		let password = this.req.body.password;
-		let email = this.req.body.email;
 		try {
 			MongoClient.connect(url, function (err, db) {
 				assert.equal(null, err);
-				let userList = []
-				let user_email = db.collection('users').find({ email: email, password: password });
-				user_email.each(function (err, doc) {
-					assert.equal(err, null);
-					if (doc != null) {
-						userList.push(doc);
-
-					} else {
-
-						return self.res.status(200).json({
-							status: 'list user data success',
-							data: userList[0]
-						})
-					}
-				});
-
-
+				let user_email = db.collection('users').find({ password: pas });
+				return self.res.status(200).json({
+					status: 'list user data success',
+					data: user_email
+				})
 			});
 		}
 		catch (error) {
+
 
 		}
 
