@@ -5,39 +5,39 @@ ul {
     padding: 5;
     overflow: hidden;
   }
-  
+
   li {
     float: left;
     padding: 0;
   }
-  
+
   li a{
     display: block;
     color: black;
     text-align: center;
     padding: 5px 10px;
     text-decoration: none;
-    
+
   }
   li:hover{
     background-color: #e2d1d1;
     border: 2px;
   }
-   
+
   .nav-item{
     background-color: #cdcdcd;
     border: 2px;
     border-radius: 5px;
     margin: 5px;
     /* padding: 5px; */
-    
+
   }
  .collapse{
   /* background-color: rgb(54, 56, 54) ; */
   border: 2px;
   border-color: black;
   border-radius: 5px;
-  
+
 }
 
-  
+

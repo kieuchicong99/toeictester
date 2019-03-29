@@ -21,7 +21,7 @@
       "styles": [
         "styles.css"
       ],
-      "scripts": [],
+      "scripts": ["assets/jsforbootstrap/popper.min.js","assets/jsforbootstrap/jquery-3.3.1.slim.min.js","assets/jsforbootstrap/bootstrap.min.js"],
       "environmentSource": "environments/environment.ts",
       "environments": {
         "dev": "environments/environment.ts",

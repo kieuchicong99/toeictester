@@ -384,7 +384,7 @@ export class ExamContentComponent implements OnInit {
 
   constructor() { }
 
-  
+
 
   ngOnInit() {
   }

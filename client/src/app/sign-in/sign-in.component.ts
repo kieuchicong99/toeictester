@@ -17,9 +17,7 @@ export class SignInComponent implements OnInit {
   ngOnInit() {
 
   }
-  showProfile(): void {
-    this.router.navigate(['/profile']);
-  }
+ 
   showDashBoard(): void {
     this.router.navigate(['/dashboard']);
   }
@@ -29,12 +27,12 @@ export class SignInComponent implements OnInit {
 
   signIn() {
     this.commonService.signIn(this.email, this.password).then(res => {
-      if(res === undefined )this.returnSignUp();  
+      if(res === undefined )this.returnSignUp();
       else if (res.email === this.email && res.password === this.password)
         this.showDashBoard();
-      
+
     });
-      
+
   }
 
 }

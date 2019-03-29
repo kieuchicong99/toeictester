@@ -1,3 +1,4 @@
+
 export class ChoiceAnswer{
     public opt:string;
     public content:string;
@@ -13,4 +14,10 @@ export class ExamContentModel{
     public time:number;
     public name: string;
     public questions: Question[];
+    constructor (other: ExamContentModel){
+      this.id = other.id;
+      this.time= other.time;
+      this.name = other.name;
+      this.questions = other.questions;
+    }
 };

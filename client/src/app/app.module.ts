@@ -19,6 +19,14 @@ import { NavComponent } from './nav/nav.component';
 import { UploadFileComponent } from './upload-file/upload-file.component';
 import { ExamContentComponent } from './exam-content/exam-content.component';
 import { DatePipeComponent } from './exam-content/date-pipe/date-pipe.component';
+import { HistoryExamComponent } from './history-exam/history-exam.component';
+import { ChartJsComponent } from './chart-js/chart-js.component';
+import { ShortExamChartComponent } from './history-exam/short-exam-chart/short-exam-chart.component';
+import { FullExamChartComponent } from './history-exam/full-exam-chart/full-exam-chart.component';
+import { MarkExamChartComponent } from './history-exam/mark-exam-chart/mark-exam-chart.component';
+import { OptionMenuComponent } from './history-exam/option-menu/option-menu.component';
+import { OptionMenu1Component } from './history-exam/option-menu1/option-menu1.component';
+import { DetailHistoryExamComponent } from './history-exam/detail-history-exam/detail-history-exam.component';
 
 
 
@@ -37,7 +45,15 @@ import { DatePipeComponent } from './exam-content/date-pipe/date-pipe.component'
     NavComponent,
     UploadFileComponent,
     ExamContentComponent,
-    DatePipeComponent
+    DatePipeComponent,
+    HistoryExamComponent,
+    ChartJsComponent,
+    ShortExamChartComponent,
+    FullExamChartComponent,
+    MarkExamChartComponent,
+    OptionMenuComponent,
+    OptionMenu1Component,
+    DetailHistoryExamComponent
   ],
   imports: [
     BrowserModule,

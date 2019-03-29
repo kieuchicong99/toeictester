@@ -1,3 +1,4 @@
+import { HistoryExamComponent } from './../history-exam/history-exam.component';
 import { UserListComponent } from './../userlist/userList.component';
 import { DashboardComponent } from '../dashboard/dashboard.component';
 import { HomeComponent } from './../home/home.component';
@@ -18,9 +19,10 @@ const routes: Routes = [
   {
     path: 'dashboard', component: DashboardComponent,
     children: [
-                { path: 'user', component: UserListComponent }, 
+                { path: 'user', component: UserListComponent },
                 { path: 'profile', component: ProfileComponent },
                 { path: 'exam', component: ExamContentComponent },
+                { path: 'history', component: HistoryExamComponent },
               ]
   },
   { path: 'toeic-tester-detail', component: ToeicTestComponent },

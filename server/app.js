@@ -31,6 +31,6 @@ app.get('/api/get-user/:id', (req, res, id)=>{
   groceryServiceObj.getUserById(id)
 })
 
-app.listen(3000, function () {
-  console.log('Grocery Web app service listening on port 3000!')
+app.listen(4000, function () {
+  console.log('Grocery Web app service listening on port 4000!')
 })

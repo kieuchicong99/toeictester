@@ -1,0 +1,13 @@
+<button type="button" class="list-group-item list-group-item-action active" (click)="show = !show">Chủ đề</button>
+<div *ngIf="show; else elseBlock">
+  <div class="list-group">
+    <button type="button" class="list-group-item list-group-item-action">Mô tả hình ảnh</button>
+    <button type="button" class="list-group-item list-group-item-action">Đọc đoạn hội thoại</button>
+    <button type="button" class="list-group-item list-group-item-action">Hỏi đáp</button>
+    <button type="button" class="list-group-item list-group-item-action">Bài nói chuyện</button>
+    <button type="button" class="list-group-item list-group-item-action">Câu không hoàn chỉnh</button>
+    <button type="button" class="list-group-item list-group-item-action">Hoàn thành đoạn văn</button>
+    <button type="button" class="list-group-item list-group-item-action">Đọc hiểu</button>
+  </div>
+</div>
+<ng-template #elseBlock></ng-template>

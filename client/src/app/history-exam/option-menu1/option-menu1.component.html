@@ -1,0 +1,10 @@
+
+<button type="button" class="list-group-item list-group-item-action active" (click)="show = !show">Thời gian</button>
+<div *ngIf="show; else elseBlock">
+  <div class="list-group">
+    <button type="button" class="list-group-item list-group-item-action">7 ngày</button>
+    <button type="button" class="list-group-item list-group-item-action">1 tháng</button>
+    <button type="button" class="list-group-item list-group-item-action">Từ trước tới nay</button>
+  </div>
+</div>
+<ng-template #elseBlock></ng-template>

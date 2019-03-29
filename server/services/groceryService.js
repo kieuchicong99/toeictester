@@ -74,21 +74,28 @@ class GroceryService {
 	}
 	getUserById(pas) {
 		let self = this;
+		const query = { "password": "abc" };
+		const options = { "limit": 1 }
 		try {
 			MongoClient.connect(url, function (err, db) {
 				assert.equal(null, err);
-				let user_email = db.collection('users').find({ password: pas });
-				return self.res.status(200).json({
-					status: 'list user data success',
-					data: user_email
-				})
+				async function result(){
+					let col= db.collection('users');
+					let user_email = await col.findOne(query, options);
+					return self.res.status(200).json({
+						status: 'list user data success',
+						data: user_email
+					})
+				}
+				result();				
 			});
 		}
 		catch (error) {
-
+			return self.res.status(500).json({
+				status: 'error',
+				error: error
+			})
 
 		}
-
 	}
 }
-module.exports = GroceryService
