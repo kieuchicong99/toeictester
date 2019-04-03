@@ -1,0 +1,88 @@
+<div class="container">
+
+    <!-- Button to Open the Modal -->
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#Modal">
+      Xem
+    </button>
+
+    <!-- The Modal -->
+    <div class="modal fade" id="Modal">
+      <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+
+          <!-- Modal Header -->
+          <div class="modal-header">
+            <h4 class="modal-title"></h4>
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+
+          <!-- Modal body -->
+          <div class="row">
+            <div class="col-lg-9">
+
+              <div class="modal-header">
+                <h4 class="modal-title">Đề thi</h4>
+              </div><br>
+
+              <div class="card">
+                <div class="container">
+                  <form *ngFor="let item of examList">
+                    <h5>Câu hỏi {{item.name_exam}}</h5>
+                    <div class="row d-flex align-items-stretch">
+                      <div class="col-lg-4">
+                        <div>
+                          <!-- A: {{item.choiceAnswer[0].content}} -->
+                        </div>
+                      </div>
+                      <div class="col-lg-4">
+                        <div>
+                          <!-- B: {{item.choiceAnswer[1].content}} -->
+                        </div>
+                      </div>
+                      <div class="col-lg-3">
+                        <div>
+                          <!-- C: {{item.choiceAnswer[2].content}} -->
+                        </div>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-3">
+
+              <div class="modal-header">
+                <h4 class="modal-title">Kết quả</h4>
+              </div><br>
+              <div class="card">
+                <div class="container">
+                  <form *ngFor="let item of exam_content.questions">
+                    <!-- <h5>Câu hỏi {{item.question_id}}</h5> -->
+                    <div class="row d-flex align-items-stretch">
+                      <div class="col-lg-6">
+                        <div>
+                          <!-- Đáp án của bạn: A -->
+                        </div>
+                      </div>
+                      <div class="col-lg-6">
+                        <div>
+                          <!-- Đáp án đúng: A -->
+                        </div>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Modal footer -->
+          <div class="modal-footer">
+            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </div>

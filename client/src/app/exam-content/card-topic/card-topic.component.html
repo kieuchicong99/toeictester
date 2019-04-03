@@ -1,0 +1,30 @@
+<div class="card">
+  <div class="card-body">
+    <h4 class="card-title">{{topic.name_topic}}</h4>
+    <div class="template-demo">
+      <table class="table mb-0">
+        <thead>
+          <tr>
+            <th class="pl-0">Tổng số bài thi</th>
+            <th class="text-right">{{topic.count_exam}}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="pl-0">Số bài đã thi</td>
+            <td class="pr-0 text-right">
+              <button type="button" class="btn  btn-primary btn-sm">{{topic.count_examed}}</button>
+            </td>
+          </tr>
+          <tr>
+            <td class="pl-0"></td>
+            <td class="pr-0 text-right">
+              <button type="button" class="btn  btn-primary btn-sm">Chọn bài thi</button>
+              <app-list-view></app-list-view>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

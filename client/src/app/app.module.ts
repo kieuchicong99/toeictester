@@ -27,6 +27,9 @@ import { MarkExamChartComponent } from './history-exam/mark-exam-chart/mark-exam
 import { OptionMenuComponent } from './history-exam/option-menu/option-menu.component';
 import { OptionMenu1Component } from './history-exam/option-menu1/option-menu1.component';
 import { DetailHistoryExamComponent } from './history-exam/detail-history-exam/detail-history-exam.component';
+import { TopicComponent } from './exam-content/topic/topic.component';
+import { CardTopicComponent } from './exam-content/card-topic/card-topic.component';
+import { ListViewComponent } from './exam-content/topic/list-view/list-view.component';
 
 
 
@@ -53,7 +56,10 @@ import { DetailHistoryExamComponent } from './history-exam/detail-history-exam/d
     MarkExamChartComponent,
     OptionMenuComponent,
     OptionMenu1Component,
-    DetailHistoryExamComponent
+    DetailHistoryExamComponent,
+    TopicComponent,
+    CardTopicComponent,
+    ListViewComponent
   ],
   imports: [
     BrowserModule,
