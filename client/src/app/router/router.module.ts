@@ -1,5 +1,6 @@
+import { ExamViewComponent } from './../exam-content/exam-view/exam-view.component';
 import { HistoryExamComponent } from './../history-exam/history-exam.component';
-import { UserListComponent } from './../userlist/userList.component';
+import { UserListComponent } from '../userlist/userlist.component';
 import { DashboardComponent } from '../dashboard/dashboard.component';
 import { HomeComponent } from './../home/home.component';
 import { SignUpComponent } from './../signup/signUp.component';
@@ -19,11 +20,16 @@ const routes: Routes = [
   {
     path: 'dashboard', component: DashboardComponent,
     children: [
-                { path: 'user', component: UserListComponent },
-                { path: 'profile', component: ProfileComponent },
-                { path: 'exam', component: ExamContentComponent },
-                { path: 'history', component: HistoryExamComponent },
-              ]
+      { path: 'user', component: UserListComponent },
+      { path: 'profile', component: ProfileComponent },
+      {
+        path: 'exam', component: ExamContentComponent,
+        children: [
+          { path: 'view-id-exam', component: ExamViewComponent }
+        ]
+      },
+      { path: 'history', component: HistoryExamComponent },
+    ]
   },
   { path: 'toeic-tester-detail', component: ToeicTestComponent },
   { path: 'dev-detail', component: DevDetailComponent },

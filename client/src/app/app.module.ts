@@ -6,7 +6,7 @@ import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 import { SignUpComponent } from './signup/signUp.component'
-import { UserListComponent } from './userlist/userList.component'
+import { UserListComponent } from './userlist/userlist.component'
 import { CommonService } from './common/common.service';
 import { SignInComponent } from './sign-in/sign-in.component';
 import { ProfileComponent } from './profile/profile.component';
@@ -30,6 +30,7 @@ import { DetailHistoryExamComponent } from './history-exam/detail-history-exam/d
 import { TopicComponent } from './exam-content/topic/topic.component';
 import { CardTopicComponent } from './exam-content/card-topic/card-topic.component';
 import { ListViewComponent } from './exam-content/topic/list-view/list-view.component';
+import { ExamViewComponent } from './exam-content/exam-view/exam-view.component';
 
 
 
@@ -59,7 +60,8 @@ import { ListViewComponent } from './exam-content/topic/list-view/list-view.comp
     DetailHistoryExamComponent,
     TopicComponent,
     CardTopicComponent,
-    ListViewComponent
+    ListViewComponent,
+    ExamViewComponent
   ],
   imports: [
     BrowserModule,

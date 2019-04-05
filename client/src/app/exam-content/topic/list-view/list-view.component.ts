@@ -1,6 +1,7 @@
 import { CommonService } from './../../../common/common.service';
 import { Component, OnInit, Input } from '@angular/core';
 import { ExamList } from './list-view.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-list-view',
@@ -9,15 +10,20 @@ import { ExamList } from './list-view.model';
 })
 export class ListViewComponent implements OnInit {
 
-  constructor(private commonService: CommonService) {}
+  constructor(private commonService: CommonService , private router: Router) {}
+  @Input() examList : Array<ExamList> ;
   getExamOfTopic(){
-    this. examList = this.commonService.getExamsOfTopicList();
+    this.examList = this.commonService.getExamsOfTopicList();
   }
 
-  @Input() examList : Array<ExamList> ;
+
 
   ngOnInit() {
     this.getExamOfTopic();
+  }
+
+  showExamView():void{
+    this.router.navigate(['/dashboard/exam/view-id-exam'])
   }
 
 }
