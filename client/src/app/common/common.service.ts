@@ -1,12 +1,10 @@
-import { ExamList } from './../exam-content/topic/list-view/list-view.model';
+import { ExamList, ExamedList } from './../exam-content/topic/list-view/list-view.model';
 import { TopicList } from './../exam-content/card-topic/topic.model';
-import { ExamContentModel } from './../exam-content/exam-content.model';
+import { ExamContentModel } from '../exam-content/exam.content.model';
 import { SignUp } from '../signup/signUp.model';
 import { Injectable } from '@angular/core';
-// import { SignUp } from '../signup/signup.component';
 import { Subject } from 'rxjs/Subject';
 import { Headers, Http } from '@angular/http';
-import { Observable } from 'rxjs';
 
 @Injectable()
 export class CommonService {
@@ -37,6 +35,7 @@ export class CommonService {
   public examcontent: ExamContentModel;
   public topicList: TopicList;
   public examList: Array<ExamList>;
+  public examedList: Array<ExamedList>;
 
   getAllUser() {
     return this.http.get('/api/get-all-user', {})
@@ -55,6 +54,37 @@ export class CommonService {
       ]
     }
     return this.topicList;
+  }
+  getExamedOfTopicList() {
+    this.examedList = [
+        { id:"exam1",name_exam: "Bài thi số 1", time: "180",num_questions:"30", point:"50"},
+        { id:"exam2",name_exam: "Bài thi số 2", time: "180",num_questions:"30", point:"50"},
+        { id:"exam3",name_exam: "Bài thi số 3", time: "180",num_questions:"30", point:"50"},
+        { id:"exam4",name_exam: "Bài thi số 4", time: "180",num_questions:"30", point:"50"},
+        { id:"exam5",name_exam: "Bài thi số 5", time: "180",num_questions:"30", point:"50"},
+        { id:"exam6",name_exam: "Bài thi số 6", time: "180",num_questions:"30", point:"50"},
+        { id:"exam7",name_exam: "Bài thi số 7", time: "180",num_questions:"30", point:"50"},
+        { id:"exam8",name_exam: "Bài thi số 8", time: "180",num_questions:"30", point:"50"},
+        { id:"exam9",name_exam: "Bài thi số 9", time: "180",num_questions:"30", point:"50"},
+        { id:"exam10",name_exam: "Bài thi số 10", time: "180",num_questions:"30", point:"50"},
+        { id:"exam11",name_exam: "Bài thi số 11", time: "180",num_questions:"30", point:"50"},
+        { id:"exam12",name_exam: "Bài thi số 12", time: "180",num_questions:"30", point:"50"},
+        { id:"exam13",name_exam: "Bài thi số 13", time: "180",num_questions:"30", point:"50"},
+        { id:"exam14",name_exam: "Bài thi số 14", time: "180",num_questions:"30", point:"50"},
+        { id:"exam15",name_exam: "Bài thi số 15", time: "180",num_questions:"30", point:"50"},
+        { id:"exam16",name_exam: "Bài thi số 16", time: "180",num_questions:"30", point:"50"},
+        { id:"exam17",name_exam: "Bài thi số 17", time: "180",num_questions:"30", point:"50"},
+        { id:"exam18",name_exam: "Bài thi số 18", time: "180",num_questions:"30", point:"50"},
+        { id:"exam19",name_exam: "Bài thi số 19", time: "180",num_questions:"30", point:"50"},
+        { id:"exam20",name_exam: "Bài thi số 20", time: "180",num_questions:"30", point:"50"},
+        { id:"exam21",name_exam: "Bài thi số 21", time: "180",num_questions:"30", point:"50"},
+        { id:"exam22",name_exam: "Bài thi số 22", time: "180",num_questions:"30", point:"50"},
+        { id:"exam23",name_exam: "Bài thi số 23", time: "180",num_questions:"30", point:"50"},
+        { id:"exam24",name_exam: "Bài thi số 24", time: "180",num_questions:"30", point:"50"},
+        { id:"exam25",name_exam: "Bài thi số 25", time: "180",num_questions:"30", point:"50"},
+        { id:"exam26",name_exam: "Bài thi số 26", time: "180",num_questions:"30", point:"50"},
+      ]
+    return this.examedList;
   }
 
   getExamsOfTopicList() {

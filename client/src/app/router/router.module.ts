@@ -10,7 +10,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ToeicTestComponent } from '../toeic-test/toeic-test.component';
 import { DevDetailComponent } from '../dev-detail/dev-detail.component';
-import { ExamContentComponent } from '../exam-content/exam-content.component';
+import { ExamComponent } from '../exam-content/exam.component';
 
 
 const routes: Routes = [
@@ -22,11 +22,12 @@ const routes: Routes = [
     children: [
       { path: 'user', component: UserListComponent },
       { path: 'profile', component: ProfileComponent },
+      { path: 'view-id-exam', component: ExamViewComponent },
       {
-        path: 'exam', component: ExamContentComponent,
-        children: [
-          { path: 'view-id-exam', component: ExamViewComponent }
-        ]
+        path: 'exam', component: ExamComponent,
+        // children: [
+        //   { path: 'view-id-exam', component: ExamViewComponent }
+        // ]
       },
       { path: 'history', component: HistoryExamComponent },
     ]

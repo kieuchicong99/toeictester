@@ -17,7 +17,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { FooterComponent } from './footer/footer.component';
 import { NavComponent } from './nav/nav.component';
 import { UploadFileComponent } from './upload-file/upload-file.component';
-import { ExamContentComponent } from './exam-content/exam-content.component';
+import { ExamComponent } from './exam-content/exam.component';
 import { DatePipeComponent } from './exam-content/date-pipe/date-pipe.component';
 import { HistoryExamComponent } from './history-exam/history-exam.component';
 import { ChartJsComponent } from './chart-js/chart-js.component';
@@ -31,6 +31,7 @@ import { TopicComponent } from './exam-content/topic/topic.component';
 import { CardTopicComponent } from './exam-content/card-topic/card-topic.component';
 import { ListViewComponent } from './exam-content/topic/list-view/list-view.component';
 import { ExamViewComponent } from './exam-content/exam-view/exam-view.component';
+import { ListViewExamedComponent } from './exam-content/topic/list-view-examed/list-view-examed.component';
 
 
 
@@ -48,7 +49,7 @@ import { ExamViewComponent } from './exam-content/exam-view/exam-view.component'
     FooterComponent,
     NavComponent,
     UploadFileComponent,
-    ExamContentComponent,
+    ExamComponent,
     DatePipeComponent,
     HistoryExamComponent,
     ChartJsComponent,
@@ -61,7 +62,8 @@ import { ExamViewComponent } from './exam-content/exam-view/exam-view.component'
     TopicComponent,
     CardTopicComponent,
     ListViewComponent,
-    ExamViewComponent
+    ExamViewComponent,
+    ListViewExamedComponent
   ],
   imports: [
     BrowserModule,

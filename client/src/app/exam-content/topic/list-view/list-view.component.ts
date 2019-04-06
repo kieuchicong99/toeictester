@@ -23,7 +23,7 @@ export class ListViewComponent implements OnInit {
   }
 
   showExamView():void{
-    this.router.navigate(['/dashboard/exam/view-id-exam'])
+    this.router.navigate(['/dashboard/view-id-exam'])
   }
 
 }

@@ -1,12 +1,12 @@
 <div class="container">
 
   <!-- Button to Open the Modal -->
-  <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#Modal">
+  <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#Modal1">
     Chọn bài thi thi
   </button>
 
   <!-- The Modal -->
-  <div class="modal fade" id="Modal">
+  <div class="modal fade" id="Modal1">
     <div class="modal-dialog modal-xl">
       <div class="modal-content">
 
@@ -32,15 +32,17 @@
                           <th>Tên đề thi</th>
                           <th>Thời gian làm bài</th>
                           <th>Số câu hỏi</th>
-                          <th></th>
+                          <th>Điểm</th>
+                          <th>Lịch sử</th>
                         </tr>
                       </thead>
                       <tbody>
-                        <tr *ngFor="let item of examList">
+                        <tr *ngFor="let item of examedList">
                           <td>{{item.name_exam}}</td>
                           <td>{{item.time}}</td>
                           <td>{{item.num_questions}}</td>
-                          <td><button type = "button"  data-dismiss="modal" (click)="showExamView()" class="btn btn-primary btn-sm">Thi</button></td>
+                          <td>{{item.point}}</td>
+                          <td><button type = "button"  data-dismiss="modal" (click)="showHistoryViewOfExamed()" class="btn btn-primary btn-sm">Xem</button></td>
                         </tr>
                       </tbody>
                     </table>
