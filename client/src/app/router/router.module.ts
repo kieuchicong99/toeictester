@@ -11,6 +11,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { ToeicTestComponent } from '../toeic-test/toeic-test.component';
 import { DevDetailComponent } from '../dev-detail/dev-detail.component';
 import { ExamComponent } from '../exam-content/exam.component';
+import { DetailHistoryExamComponent } from '../history-exam/detail-history-exam/detail-history-exam.component';
+import { ModalExamComponent } from '../history-exam/detail-history-exam/modal-exam/modal-exam.component';
 
 
 const routes: Routes = [
@@ -23,6 +25,8 @@ const routes: Routes = [
       { path: 'user', component: UserListComponent },
       { path: 'profile', component: ProfileComponent },
       { path: 'view-id-exam', component: ExamViewComponent },
+      { path: 'view-id-examed', component: ModalExamComponent },
+      
       {
         path: 'exam', component: ExamComponent,
         // children: [

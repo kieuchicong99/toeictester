@@ -44,7 +44,6 @@ export class CommonService {
   getTopicList() {
     this.topicList = {
       topics: [
-        { name_topic: "Bài thi số 1", count_exam: "100", count_examed:"50" },
         { name_topic: "Đọc đoạn hội thoại", count_exam: "100", count_examed:"20" },
         { name_topic: "Hỏi đáp", count_exam: "10", count_examed:"0" },
         { name_topic: "Bài nói chuyện", count_exam: "20", count_examed:"7" },

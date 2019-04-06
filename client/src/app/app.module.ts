@@ -32,6 +32,7 @@ import { CardTopicComponent } from './exam-content/card-topic/card-topic.compone
 import { ListViewComponent } from './exam-content/topic/list-view/list-view.component';
 import { ExamViewComponent } from './exam-content/exam-view/exam-view.component';
 import { ListViewExamedComponent } from './exam-content/topic/list-view-examed/list-view-examed.component';
+import { ModalExamComponent } from './history-exam/detail-history-exam/modal-exam/modal-exam.component';
 
 
 
@@ -63,7 +64,8 @@ import { ListViewExamedComponent } from './exam-content/topic/list-view-examed/l
     CardTopicComponent,
     ListViewComponent,
     ExamViewComponent,
-    ListViewExamedComponent
+    ListViewExamedComponent,
+    ModalExamComponent
   ],
   imports: [
     BrowserModule,

@@ -2,11 +2,11 @@
 
   <!-- Button to Open the Modal -->
   <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#Modal1">
-    Chọn bài thi thi
+    Xem
   </button>
 
   <!-- The Modal -->
-  <div class="modal fade" id="Modal1">
+  <div class="modal fade " id="Modal1">
     <div class="modal-dialog modal-xl">
       <div class="modal-content">
 
@@ -17,36 +17,42 @@
         </div>
 
         <!-- Modal body -->
-        <div class="row">
+        <div class="row ">
           <div class="col-lg-9">
 
             <div class="modal-header">
               <h4 class="modal-title">Đề thi</h4>
-            </div><br>
-
-            <div class="card" style="text-align: left">
+            </div>
+            <div class="card " style="text-align: left">
                 <div class="card-block">
-                    <table class="table table-striped">
-                      <thead>
-                        <tr>
-                          <th>Tên đề thi</th>
-                          <th>Thời gian làm bài</th>
-                          <th>Số câu hỏi</th>
-                          <th>Điểm</th>
-                          <th>Lịch sử</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr *ngFor="let item of examedList">
-                          <td>{{item.name_exam}}</td>
-                          <td>{{item.time}}</td>
-                          <td>{{item.num_questions}}</td>
-                          <td>{{item.point}}</td>
-                          <td><button type = "button"  data-dismiss="modal" (click)="showHistoryViewOfExamed()" class="btn btn-primary btn-sm">Xem</button></td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
+                  <table class="table table-striped">
+                    <thead>
+                      <tr>
+                        <th>Tên đề thi</th>
+                        <th>Thời gian làm bài</th>
+                        <th>Số câu hỏi</th>
+                        <th>Điểm</th>
+                        <th>Lịch sử</th>
+                      </tr>
+                    </thead>
+                  </table>
+                </div>
+              </div>
+            <div class="card custom" style="text-align: left">
+              <div class="card-block">
+                <table class="table table-striped">
+                  <tbody>
+                    <tr *ngFor="let item of examedList">
+                      <td>{{item.name_exam}}</td>
+                      <td>{{item.time}}</td>
+                      <td>{{item.num_questions}}</td>
+                      <td>{{item.point}}</td>
+                      <td><button type="button" data-dismiss="modal" (click)="showHistoryViewOfExamed()"
+                          class="btn btn-primary btn-sm">Xem</button></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
             </div>
           </div>
           <div class="col-lg-3">
@@ -59,14 +65,14 @@
                 <form>
                   <!-- <h5>Câu hỏi {{item.question_id}}</h5> -->
                   <div class="row d-flex align-items-stretch">
-                    <div class="col-lg-6">
+                    <div class="col-lg-4">
                       <div>
-                        <!-- Đáp án của bạn: A -->
+                        Đã thi: 30
                       </div>
                     </div>
-                    <div class="col-lg-6">
+                    <div class="col-lg-8">
                       <div>
-                        <!-- Đáp án đúng: A -->
+                        Điểm trung bình: 89.5
                       </div>
                     </div>
                   </div>

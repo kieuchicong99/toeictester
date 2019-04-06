@@ -13,12 +13,13 @@ export class ListViewExamedComponent implements OnInit {
   constructor(private commonService: CommonService , private router: Router) { }
 
   public examedList: Array<ExamedList> ;
+  @Input() name:string;
 
   getExamedOfTopic(){
     this.examedList = this.commonService.getExamedOfTopicList();
   }
   showHistoryViewOfExamed():void{
-    this.router.navigate(['/dashboard/history'])
+    this.router.navigate(['/dashboard/view-id-examed'])
   }
 
   ngOnInit() {
