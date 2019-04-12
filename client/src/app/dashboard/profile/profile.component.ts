@@ -1,4 +1,4 @@
-import { SignUp } from './../signup/signUp.model';
+import { SignUp } from '../../signup/signUp.model';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 

@@ -1,11 +1,11 @@
-import { SignUp } from '../signup/signUp.model';
+import { SignUp } from '../../signup/signUp.model';
 import { Component, OnInit } from '@angular/core';
-import { CommonService } from '../common/common.service'
+import { CommonService } from '../../common/common.service'
 
 @Component({
 	selector: 'user-list',
 	templateUrl: './userlist.component.html',
-	styleUrls: ['../../assets/bootstrap.min.css']
+	styleUrls: ['./userlist.component.css']
 })
 export class UserListComponent implements OnInit {
 

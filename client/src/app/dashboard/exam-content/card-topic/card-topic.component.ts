@@ -1,4 +1,4 @@
-import { CommonService } from './../../common/common.service';
+import { CommonService } from '../../../common/common.service';
 import { Topic, TopicList } from './topic.model';
 import { Component, OnInit, Input } from '@angular/core';
 

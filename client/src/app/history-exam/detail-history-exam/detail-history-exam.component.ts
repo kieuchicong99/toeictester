@@ -1,6 +1,6 @@
 import { CommonService } from './../../common/common.service';
 import { Component, OnInit, Input } from '@angular/core';
-import { ExamContentModel } from '../../exam-content/exam.content.model';
+import { ExamContentModel } from '../../dashboard/exam-content/exam.content.model';
 
 
 @Component({

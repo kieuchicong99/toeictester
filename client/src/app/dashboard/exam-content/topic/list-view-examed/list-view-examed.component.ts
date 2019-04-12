@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { CommonService } from './../../../common/common.service';
+import { CommonService } from '../../../../common/common.service';
 import { Router } from '@angular/router';
 import { ExamedList } from '../list-view/list-view.model';
 

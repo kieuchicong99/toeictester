@@ -1,4 +1,4 @@
-import { CommonService } from './../../../common/common.service';
+import { CommonService } from '../../../../common/common.service';
 import { Component, OnInit, Input } from '@angular/core';
 import { ExamList } from './list-view.model';
 import { Router } from '@angular/router';

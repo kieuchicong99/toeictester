@@ -1,6 +1,6 @@
-import { ExamList, ExamedList } from './../exam-content/topic/list-view/list-view.model';
-import { TopicList } from './../exam-content/card-topic/topic.model';
-import { ExamContentModel } from '../exam-content/exam.content.model';
+import { ExamList, ExamedList } from '../dashboard/exam-content/topic/list-view/list-view.model';
+import { TopicList } from '../dashboard/exam-content/card-topic/topic.model';
+import { ExamContentModel } from '../dashboard/exam-content/exam.content.model';
 import { SignUp } from '../signup/signUp.model';
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs/Subject';
