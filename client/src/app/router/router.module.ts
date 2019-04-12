@@ -9,9 +9,7 @@ import { SignInComponent } from '../sign-in/sign-in.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ToeicTestComponent } from '../toeic-test/toeic-test.component';
-import { DevDetailComponent } from '../dev-detail/dev-detail.component';
 import { ExamComponent } from '../exam-content/exam.component';
-import { DetailHistoryExamComponent } from '../history-exam/detail-history-exam/detail-history-exam.component';
 import { ModalExamComponent } from '../history-exam/detail-history-exam/modal-exam/modal-exam.component';
 
 
@@ -36,8 +34,7 @@ const routes: Routes = [
       { path: 'history', component: HistoryExamComponent },
     ]
   },
-  { path: 'toeic-tester-detail', component: ToeicTestComponent },
-  { path: 'dev-detail', component: DevDetailComponent },
+  { path: 'toeic-tester-detail', component: ToeicTestComponent }
 
 ];
 
