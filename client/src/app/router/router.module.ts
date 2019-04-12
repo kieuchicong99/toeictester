@@ -1,5 +1,5 @@
 import { ExamViewComponent } from '../dashboard/exam-content/exam-view/exam-view.component';
-import { HistoryExamComponent } from './../history-exam/history-exam.component';
+import { HistoryExamComponent } from '../dashboard/history-exam/history-exam.component';
 import { UserListComponent } from '../dashboard/userlist/userlist.component';
 import { DashboardComponent } from '../dashboard/dashboard.component';
 import { HomeComponent } from './../home/home.component';
@@ -10,7 +10,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ToeicTestComponent } from '../toeic-test/toeic-test.component';
 import { ExamComponent } from '../dashboard/exam-content/exam.component';
-import { ModalExamComponent } from '../history-exam/detail-history-exam/modal-exam/modal-exam.component';
+import { ModalExamComponent } from '../dashboard/history-exam/detail-history-exam/modal-exam/modal-exam.component';
 
 
 const routes: Routes = [
