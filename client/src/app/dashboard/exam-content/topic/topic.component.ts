@@ -18,10 +18,6 @@ export class TopicComponent implements OnInit {
   public topicList : TopicList;
 
   ngOnInit() {
-    if (this.commonService.getToken() == null) {
-      this.backHome();
-      alert("Rất tiêc :((\nBạn chưa đăng nhập!!!");
-    }
     this.getTopic();
   }
   backHome(): void {
