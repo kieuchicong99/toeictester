@@ -11,7 +11,7 @@ export class UserListComponent implements OnInit {
 
 	public userList: SignUp[]
 
-	constructor(private commonService: CommonService) {
+	constructor(public commonService: CommonService) {
 
 	}
 	getAllUser() {

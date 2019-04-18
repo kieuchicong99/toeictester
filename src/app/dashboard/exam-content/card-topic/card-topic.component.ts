@@ -11,7 +11,7 @@ export class CardTopicComponent implements OnInit {
 
    @Input() topic: Topic;
 
-  constructor(private commonService: CommonService) { }
+  constructor(public commonService: CommonService) { }
 
   ngOnInit() {
   }

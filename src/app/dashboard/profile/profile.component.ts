@@ -11,7 +11,7 @@ import 'rxjs/add/operator/map';
 
 export class ProfileComponent implements OnInit {
   public profile;
-  constructor(private commonServices: CommonService, private http: Http) { }
+  constructor(public commonServices: CommonService, public http: Http) { }
 
   getProfile() {
     this.commonServices.getProfile().then(res => {

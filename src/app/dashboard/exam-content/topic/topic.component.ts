@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 })
 export class TopicComponent implements OnInit {
 
-  constructor(private router: Router,private commonService: CommonService) { }
+  constructor(public router: Router,public commonService: CommonService) { }
 
   getTopic(){
     this.topicList = this.commonService.getTopicList();

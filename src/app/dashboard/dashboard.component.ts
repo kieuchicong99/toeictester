@@ -9,7 +9,7 @@ import { CommonService } from '../common/common.service';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor(private router: Router, private commonService: CommonService) { }
+  constructor(public router: Router, public commonService: CommonService) { }
 
   logOut() {
     this.commonService.clearToken();

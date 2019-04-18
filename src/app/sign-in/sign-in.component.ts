@@ -8,10 +8,10 @@ import { CommonService } from '../common/common.service'
   styleUrls: ['./sign-in.component.css']
 })
 export class SignInComponent implements OnInit {
-  private password;
-  private username;
+  public password;
+  public username;
 
-  constructor(private commonService: CommonService, private router: Router) { }
+  constructor(public commonService: CommonService, public router: Router) { }
 
   ngOnInit() {
 

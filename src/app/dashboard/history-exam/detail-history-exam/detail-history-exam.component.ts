@@ -10,7 +10,7 @@ import { ExamContentModel } from '../../exam-content/exam.content.model';
 })
 export class DetailHistoryExamComponent implements OnInit {
 
-  constructor(private commonService: CommonService) {}
+  constructor(public commonService: CommonService) {}
   // lay ket qua noi dung bai thi
 
   getExamContentResult(){

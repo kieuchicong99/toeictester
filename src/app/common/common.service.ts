@@ -9,9 +9,9 @@ import { EmailValidator } from '@angular/forms';
 
 @Injectable()
 export class CommonService {
-  private headers = new Headers({ 'Content-Type': 'application/json' });
+  public headers = new Headers({ 'Content-Type': 'application/json' });
   public add_subject = new Subject<String>();
-  constructor(private http: Http) {
+  constructor(public http: Http) {
 
   }
 

@@ -12,9 +12,9 @@ am4core.useTheme(am4themes_animated);
 })
 export class ChartJsComponent {
 
-  private chart: am4charts.XYChart;
+  public chart: am4charts.XYChart;
 
-  constructor(private zone: NgZone) {}
+  constructor(public zone: NgZone) {}
 
   ngAfterViewInit() {
     this.zone.runOutsideAngular(() => {

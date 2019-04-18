@@ -15,8 +15,8 @@ am4core.useTheme(am4themes_animated);
 })
 export class FullExamChartComponent {
 
-  private chart: am4charts.PieChart;
-  constructor(private zone: NgZone) { }
+  public chart: am4charts.PieChart;
+  constructor(public zone: NgZone) { }
   ngAfterViewInit() {
     this.zone.runOutsideAngular(() => {
       // Create chart instance

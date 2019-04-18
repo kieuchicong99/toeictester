@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 })
 export class ListViewComponent implements OnInit {
 
-  constructor(private commonService: CommonService , private router: Router) {}
+  constructor(public commonService: CommonService , public router: Router) {}
   @Input() examList : Array<ExamList> ;
   getExamOfTopic(){
     this.examList = this.commonService.getExamsOfTopicList();

@@ -12,19 +12,19 @@ import { Router } from '@angular/router';
 })
 export class SignUpComponent implements OnInit {
 
-	private username;
-	private first_name;
-	private last_name;
-	private password;
-	private email;
-	private confirmPass;
-	private errorState;
-	private errorPas = "Mật khẩu phải dài tối thiểu 8 kí tự";
-	private sucessState;
+	public username;
+	public first_name;
+	public last_name;
+	public password;
+	public email;
+	public confirmPass;
+	public errorState;
+	public errorPas = "Mật khẩu phải dài tối thiểu 8 kí tự";
+	public sucessState;
 
 
 
-	constructor(private commonService: CommonService, private router: Router) {
+	constructor(public commonService: CommonService, public router: Router) {
 
 	}
 	confirmPassWord(password, confirmPass) {

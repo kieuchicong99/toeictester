@@ -10,7 +10,7 @@ import { ExamedList } from '../list-view/list-view.model';
 })
 export class ListViewExamedComponent implements OnInit {
 
-  constructor(private commonService: CommonService , private router: Router) { }
+  constructor(public commonService: CommonService , public router: Router) { }
 
   public examedList: Array<ExamedList> ;
   @Input() name:string;
