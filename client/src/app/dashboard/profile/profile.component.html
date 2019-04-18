@@ -1,0 +1,61 @@
+<div class="page home-page active-sm">
+  <div class="breadcrumb-holder">
+    <div class="container-fluid">
+      <ul class="breadcrumb">
+
+      </ul>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-2">
+      <div class="card">
+        <div class="card-header d-flex align-items-center">
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-6">
+      <div class="card">
+        <div class="container">
+          <h2>Thông tin Profile</h2>
+          <form>
+            <div class="row d-flex align-items-stretch">
+              <div class="col-lg-4">
+                <div class="form-group">
+                  <label for="usr">Họ và tên:</label><br>
+                </div>
+                <div class="form-group">
+                  <label for="pwd">Email:</label><br>
+                </div>
+                <div class="form-group">
+                  <label for="pwd">Sex:</label><br>
+                </div>
+                <div class="form-group">
+                  <label for="pwd">Birthday:</label><br>
+                </div>
+              </div>
+
+              <div class="col-lg-4">
+                <div class="form-group">
+                  <input type="text" class="form-control form-control-sm" placeholder={{profile.username}}>
+                </div>
+                <div class="form-group">
+                  <input type="text" class="form-control form-control-sm" placeholder={{profile.email}}>
+                </div>
+                <div class="form-group">
+                  <input type="text" class="form-control form-control-sm" placeholder={{profile.sex}}>
+                </div>
+                <div class="form-group">
+                  <input type="text" class="form-control form-control-sm" placeholder={{profile.birthday}}>
+                </div>
+              </div>
+
+              <div class="col-lg-2">
+                <button class="btn btn-success btn-sm" onclick="changeProfile()">Thay đổi </button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
