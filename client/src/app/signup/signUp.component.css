@@ -1,16 +1,16 @@
 .modal-body{
     background-color: #cdcdcd ;
     width: 350px;
-    height: 500px;
+    height: 600px;
     border: 5px rgb(19, 21, 22); 
     margin: auto;
-    top: 70px ;
+    top: 40px ;
     border-radius: 15px;
 }
 .modal-footer{
     top: 100px ;
 }
-h1 {
+h3 {
     text-align: center;
   }
 h6 {

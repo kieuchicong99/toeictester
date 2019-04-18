@@ -26,10 +26,13 @@ export class SignInComponent implements OnInit {
 
   signIn() {
     this.commonService.signIn(this.username, this.password).then(res => {
-      if (res.access_token === null) this.returnSignUp();
-      else if (res.access_token == this.commonService.getToken()) this.showDashBoard();
-      this.commonService.setToken(res.access_token);
-
+      console.log("res.access_toke:", res.access_token);
+      if (res.access_token == null) this.returnSignUp();
+      else {
+        this.commonService.setToken(res.access_token);
+        // else if (res.access_token == this.commonService.getToken()) 
+        this.showDashBoard();
+      }
     });
 
   }

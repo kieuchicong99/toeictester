@@ -19,7 +19,17 @@ export class ListViewComponent implements OnInit {
 
 
   ngOnInit() {
+    if (this.commonService.getToken() == null) {
+      this.backHome();
+      alert("Rất tiêc :((\nBạn chưa đăng nhập!!!");
+    }
+    else
     this.getExamOfTopic();
+  }
+
+  backHome(): void {
+    this.router.navigate(['/home']);
+
   }
 
   showExamView():void{

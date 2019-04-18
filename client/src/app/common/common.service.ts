@@ -23,9 +23,13 @@ export class CommonService {
     localStorage.setItem('token', token);
   }
 
-  signUp(name: string, password: string, email: string, confirmPass: string): Promise<SignUp> {
+  clearToken(){
+    localStorage.removeItem('token');
+  }
+
+  signUp(username: string, password: string, email: string, first_name:string,last_name:string): Promise<SignUp> {
     return this.http
-      .post('/api/sign-up', JSON.stringify({ name: name, password: password, email: email }), { headers: this.headers })
+      .post('/api/users', JSON.stringify({ username: username, password: password,first_name:first_name,last_name:last_name, email: email }), { headers: this.headers })
       .toPromise()
       .then(res => res.json().data as SignUp)
       .catch();
@@ -82,7 +86,72 @@ export class CommonService {
       .catch();
 
   }
+  
+  // gửi yêu cầu làm bài thi
 
+  createRequestDoExam(id_exam: string){
+    let header = new Headers();
+    header.append("Authorization", this.getToken());
+
+    return this.http.post('/api/yeu_cau_lam_bai_thi/:id_exam',JSON.stringify({id_exam:id_exam}), {
+      headers: header
+    })
+      .toPromise()
+      .then(res => {
+        return res.json();
+      })
+      .catch();
+
+  }
+  
+  // lấy danh sách bài thi
+  get_danhsachbaithi(){
+    let header = new Headers();
+    header.append("Authorization", this.getToken());
+
+    return this.http.get('/api/lay_danh_sach_bai_thi', {
+      headers: header
+    })
+      .toPromise()
+      .then(res => {
+        return res.json().user as Profile;
+      })
+      .catch();
+
+  }
+
+  // lấy kết quả bài thi
+  get_ketquabaithi(){
+
+    let header = new Headers();
+    header.append("Authorization", this.getToken());
+
+    return this.http.get('/api/lay_ket_qua_bai_thi', {
+      headers: header
+    })
+      .toPromise()
+      .then(res => {
+        return res.json().user as Profile;
+      })
+      .catch();
+  }
+
+  // gửi đáp án bài làm
+  sendTaskToServer(){
+
+    let header = new Headers();
+    header.append("Authorization", this.getToken());
+
+    return this.http.post('/api/gui_dap_an_bai_lam',JSON.stringify({}),{
+      headers: header
+    })
+      .toPromise()
+      .then(res => {
+        return res.json().user as Profile;
+      })
+      .catch();
+
+  }
   getTopicList() {
     this.topicList = {
       topics: [

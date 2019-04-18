@@ -12,7 +12,9 @@ import { Router } from '@angular/router';
 })
 export class SignUpComponent implements OnInit {
 
-	private name;
+	private username;
+	private first_name;
+	private last_name;
 	private password;
 	private email;
 	private confirmPass;
@@ -51,8 +53,8 @@ export class SignUpComponent implements OnInit {
 			this.setSuc();
 			this.errorPas = "";
 			this.errorState = '';
-			this.commonService.signUp(this.name, this.password, this.email, this.confirmPass);
-			this.name = null;
+			this.commonService.signUp(this.username, this.password, this.first_name, this.last_name, this.email);
+			this.username = null;
 			this.password = null;
 			this.email = null;
 			this.confirmPass = null;
