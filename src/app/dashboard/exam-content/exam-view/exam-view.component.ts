@@ -382,6 +382,7 @@ export class ExamViewComponent implements OnInit {
     ]
 
   };
+  submit(){}
   constructor() { }
 
   ngOnInit() {
