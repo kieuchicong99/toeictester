@@ -1,7 +1,6 @@
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { CommonService } from '../common/common.service'
-import { SignUp } from '../signup/signUp.model';
 
 @Component({
   selector: 'app-sign-in',
@@ -10,26 +9,26 @@ import { SignUp } from '../signup/signUp.model';
 })
 export class SignInComponent implements OnInit {
   private password;
-  private email;
+  private username;
 
   constructor(private commonService: CommonService, private router: Router) { }
 
   ngOnInit() {
 
   }
- 
+
   showDashBoard(): void {
     this.router.navigate(['/dashboard']);
   }
-  returnSignUp(): void{
+  returnSignUp(): void {
     this.router.navigate(['/sign-up']);
   }
 
   signIn() {
-    this.commonService.signIn(this.email, this.password).then(res => {
-      if(res === undefined )this.returnSignUp();
-      else if (res.email === this.email && res.password === this.password)
-        this.showDashBoard();
+    this.commonService.signIn(this.username, this.password).then(res => {
+      if (res.access_token === null) this.returnSignUp();
+      else if (res.access_token == this.commonService.getToken()) this.showDashBoard();
+      this.commonService.setToken(res.access_token);
 
     });
 

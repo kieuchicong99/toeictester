@@ -22,44 +22,35 @@
               <div class="col-lg-4">
                 <div class="form-group">
                   <label for="usr">Họ và tên:</label><br>
-                  <i><u>{{profile.name}}</u></i>
                 </div>
                 <div class="form-group">
                   <label for="pwd">Email:</label><br>
-                  <i><u>{{profile.email}}</u></i>
                 </div>
                 <div class="form-group">
-                  <label for="pwd">Level:</label><br>
-                  <i><u>{{profile.level}}</u></i>
+                  <label for="pwd">Sex:</label><br>
+                </div>
+                <div class="form-group">
+                  <label for="pwd">Birthday:</label><br>
                 </div>
               </div>
+
               <div class="col-lg-4">
                 <div class="form-group">
-                  <label for="usr">Họ và tên:</label><br>
-                  <input type="text" class="form-control form-control-sm">
+                  <input type="text" class="form-control form-control-sm" placeholder={{profile.username}}>
                 </div>
                 <div class="form-group">
-                  <label for="pwd">Email:</label><br>
-                  <input type="text" class="form-control form-control-sm">
+                  <input type="text" class="form-control form-control-sm" placeholder={{profile.email}}>
                 </div>
                 <div class="form-group">
-                  <label for="pwd">Level:</label><br>
-                  <input type="text" class="form-control form-control-sm">
+                  <input type="text" class="form-control form-control-sm" placeholder={{profile.sex}}>
+                </div>
+                <div class="form-group">
+                  <input type="text" class="form-control form-control-sm" placeholder={{profile.birthday}}>
                 </div>
               </div>
+
               <div class="col-lg-2">
-                <div class="form-group">
-                  <label for="usr">Họ và tên:</label><br>
-                  <button class="btn btn-success btn-sm">Thay đổi</button>
-                </div>
-                <div class="form-group">
-                  <label for="pwd">Email:</label><br>
-                  <button class="btn btn-success btn-sm">Thay đổi </button>
-                </div>
-                <div class="form-group">
-                  <label for="pwd">Level:</label><br>
-                  <button class="btn btn-success btn-sm">Thay đổi </button>
-                </div>
+                <button class="btn btn-success btn-sm" onclick="changeProfile()">Thay đổi </button>
               </div>
             </div>
           </form>

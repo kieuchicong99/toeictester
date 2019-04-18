@@ -1,11 +1,8 @@
-import { SignUp } from '../../signup/signUp.model';
-import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
+import { CommonService } from '../../common/common.service';
+import { Http } from '@angular/http';
+import 'rxjs/add/operator/map';
 
-class Profile{
-  
-  
-}
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
@@ -13,11 +10,22 @@ class Profile{
 })
 
 export class ProfileComponent implements OnInit {
-  public profile = new SignUp("Kiều Chí Công","","kieuchicong99@gmail.com","active", "mod" );
-  constructor() { }
+  public profile;
+  constructor(private commonServices: CommonService, private http: Http) { }
+
+  getProfile() {
+    this.commonServices.getProfile().then(res => {
+      this.profile = res;
+    });
+  }
+  changeProfile() {
+    this.commonServices.changeProfile("", "", "", new Date(1, 1, 1, 1, 1, 1, 1)).then(res => {
+    })
+  }
 
   ngOnInit() {
+    this.getProfile();
   }
-  
+
 
 }
