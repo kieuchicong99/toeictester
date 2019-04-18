@@ -4,3 +4,6 @@ client/node_modules
 # ignorge node modules in server
 
 server/node_modules
+
+# ignorge server 
+server
