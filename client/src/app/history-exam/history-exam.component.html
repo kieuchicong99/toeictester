@@ -1,0 +1,107 @@
+<div class="page home-page active-sm">
+  <div class="breadcrumb-holder">
+    <div class="container-fluid">
+      <ul class="breadcrumb">
+      </ul>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-2">
+      <div class="card">
+        <div class="card-header d-flex align-items-center">
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-10">
+      <div class="card">
+        <div class="container">
+          <!-- lịch sử thi dưới dạng bảng -->
+
+          <h2 class="h2_class">Thống kê Lịch sử thi</h2>
+          <app-chart-js></app-chart-js>
+
+          <form>
+            <div class="row d-flex align-items-stretch">
+              <div class="col-lg-4" style="text-align: center">
+                <h3>Bài thi ngắn</h3>
+                <app-short-exam-chart></app-short-exam-chart>
+
+              </div>
+              <div class="col-lg-4" style="text-align: center">
+                <h3>Bài thi đầy đủ</h3>
+                <app-full-exam-chart></app-full-exam-chart>
+              </div>
+              <div class="col-lg-4" style="text-align: center">
+                <h3>Tỉ lệ điểm</h3>
+                <app-mark-exam-chart></app-mark-exam-chart>
+              </div>
+            </div>
+          </form>
+
+          <!-- lịch sử thi theo dạng bảng -->
+          <h2>Lịch sử thi</h2>
+          <div class="page home-page active-sm">
+            <div class="breadcrumb-holder">
+              <div class="container-fluid">
+                <ul class="breadcrumb">
+
+                </ul>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-2">
+                <h1><button type="button" class="btn btn-success">Xem lịch sử</button><br></h1>
+                <h5>Lựa chọn</h5>
+                <div class="card">
+                  <app-option-menu></app-option-menu>
+                  <br>
+                  <app-option-menu1></app-option-menu1>
+                </div>
+              </div>
+              <div class="col-lg-10">
+                <div class="card">
+                  <div class="card-header d-flex align-items-center">
+                    <h2 class="h5 display">Danh sách lịch sử thi</h2>
+                  </div>
+                  <div class="card-block">
+                    <table class="table table-striped">
+                      <thead>
+                        <tr>
+                          <th>#</th>
+                          <th>Chủ đề</th>
+                          <th>Tên bài thi</th>
+                          <th>Thời gian</th>
+                          <th>Thời gian nộp bài</th>
+                          <th>Điểm</th>
+                          <th>Xếp hạng</th>
+                          <th>Ngày làm bài</th>
+                          <th>Chi tiết</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let item of historyList.exams">
+                          <th scope="row">1</th>
+                          <td>{{item.type_exam}}</td>
+                          <td>{{item.name_exam}}</td>
+                          <td>{{item.time}}</td>
+                          <td>{{item.time_real}}</td>
+                          <td>{{item.point}}</td>
+                          <td>{{item.rank}}</td>
+                          <td>{{item.date.getDate()}}/{{item.date.getMonth()}}/{{item.date.getFullYear()}}</td>
+                          <td>
+                            <app-detail-history-exam [exam_content]></app-detail-history-exam>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

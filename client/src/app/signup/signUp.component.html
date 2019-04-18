@@ -1,0 +1,12 @@
+<div class="rounded" class="modal-body">
+  <h1>Sign up</h1>
+  <h3>Họ và tên</h3><input class="form-control" [(ngModel)]="name" id="ex1" type="text" placeholder="name">
+  <h3>Email</h3><input class="form-control" [(ngModel)]="email" id="ex2" type="text" placeholder="example@gmail.com">
+  <h3>Mật khẩu</h3><input class="form-control" [(ngModel)]="password" id="ex3" type="password" placeholder="password">
+  <h6><i>{{errorPas}}</i></h6>
+  <h3>Xác nhận mật khẩu</h3><input class="form-control" [(ngModel)]="confirmPass" id="ex4" type="password"
+    placeholder="confirm">
+  <h6><i>{{errorState}}</i></h6>
+  <h3></h3><button type="button" (click)="signUp()" data-dismiss="modal" class="btn btn-primary">Sign up</button>
+  <h6><i>{{sucessState}}</i></h6>
+</div>

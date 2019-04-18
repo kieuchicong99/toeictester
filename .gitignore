@@ -1,15 +1,8 @@
 # ignorge node modules in client
 
-node_modules
+client/node_modules
+# ignorge node modules in server
 
-
-# ignorge server 
-server
-
-<<<<<<< HEAD
 server/node_modules
 
-# ignorge server 
-server
-=======
->>>>>>> 1810
+

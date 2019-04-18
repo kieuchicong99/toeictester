@@ -1,0 +1,19 @@
+.modal-body{
+    background-color: #cdcdcd ;
+    width: 350px;
+    height: 500px;
+    border: 5px rgb(19, 21, 22); 
+    margin: auto;
+    top: 70px ;
+    border-radius: 15px;
+}
+.modal-footer{
+    top: 100px ;
+}
+h1 {
+    text-align: center;
+  }
+h6 {
+    text-align: center;
+    color: rgb(25, 9, 172);
+}  
