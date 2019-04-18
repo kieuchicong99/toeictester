@@ -1,9 +1,7 @@
 # ignorge node modules in client
 
-client/node_modules
-# ignorge node modules in server
+node_modules
 
-server/node_modules
 
 # ignorge server 
 server
