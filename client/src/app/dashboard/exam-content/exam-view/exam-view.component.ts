@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ExamContentModel } from '../exam.content.model';
+import { CommonService } from '../../../common/common.service';
 
 @Component({
   selector: 'app-exam-view',
@@ -7,6 +8,31 @@ import { ExamContentModel } from '../exam.content.model';
   styleUrls: ['./exam-view.component.css']
 })
 export class ExamViewComponent implements OnInit {
+  constructor(private commonService: CommonService){}
+
+  timeLeft: number = 10;
+  interval;
+  show: boolean = true;
+  public status = "chưa nộp bài";
+  showAlert(){
+    alert("Hết giờ làm bài\nBài thi của bạn đã tự động được submit")
+  }
+  changeStatus(){
+    this.show = false;
+    this.status  = "đã nộp bài";
+  }
+  startTimer() {
+    this.interval = setInterval(() => {
+      if (this.timeLeft > 0) {
+        this.timeLeft--;
+      } else {
+        this.clearSessionExamToken();
+        this.showAlert();
+        clearInterval(this.interval);
+        this.changeStatus();
+      }
+    }, 1000)
+  }
 
   public examcontent: ExamContentModel = {
     id: "dasjdhasdksjkjbdsjk",
@@ -382,10 +408,36 @@ export class ExamViewComponent implements OnInit {
     ]
 
   };
-  submit(){}
-  constructor() { }
+  
+  getSessionExamToken(): string {
+    return localStorage.getItem('exam_token');
+  }
+
+  setSessionExamToken(token: string): void {
+    sessionStorage.setItem('exam_token', token);
+  }
+
+  clearSessionExamToken(){
+    localStorage.removeItem('exam_token');
+  }
+
+  submit(){
+    this.changeStatus();
+    this.commonService.submitExam();
+  }
+  
 
   ngOnInit() {
+    this.setSessionExamToken("11111111111111111111");
+    this.startTimer();
+  //   if(this.show == false)this.showAlert();
+  //   if (this.timeLeft <= 0) {
+      
+  //     clearInterval(this.interval);
+  //   }
+  //   else {
+      
+  //   }
   }
 
 }

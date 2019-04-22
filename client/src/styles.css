@@ -2,10 +2,16 @@
 @import "~bootstrap/dist/css/bootstrap.css";
 @import "~bootstrap/dist/css/bootstrap.min.css";
 
-.model-height{
+.model-height {
     height: 500px;
-   }
-   .custom{
-       height: 400px;
-       overflow: scroll;
-   }
+}
+
+.custom {
+    height: 400px;
+    overflow: scroll;
+}
+
+.examcustom {
+    height: 500px;
+    overflow: scroll;
+}

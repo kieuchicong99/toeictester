@@ -152,6 +152,10 @@ export class CommonService {
       .catch();
 
   }
+
+  submitExam(){
+    
+  }
   getTopicList() {
     this.topicList = {
       topics: [
