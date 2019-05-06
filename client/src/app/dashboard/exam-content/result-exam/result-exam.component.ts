@@ -1,14 +1,14 @@
-import { Component, OnInit,Input } from '@angular/core';
-import { CommonService } from '../../../../common/common.service';
-import { ExamContentModel } from '../../../exam-content/exam.content.model';
+import { Component, OnInit, Input } from '@angular/core';
+import { CommonService } from '../../../common/common.service';
+import { ExamContentModel } from '../exam.content.model';
 import { toNumber } from '@amcharts/amcharts4/.internal/core/utils/Type';
 
 @Component({
-  selector: 'app-modal-exam',
-  templateUrl: './modal-exam.component.html',
-  styleUrls: ['./modal-exam.component.css']
+  selector: 'app-result-exam',
+  templateUrl: './result-exam.component.html',
+  styleUrls: ['./result-exam.component.css']
 })
-export class ModalExamComponent implements OnInit {
+export class ResultExamComponent implements OnInit {
 
   constructor(public commonService: CommonService) {}
   // lay ket qua noi dung bai thi
@@ -35,10 +35,11 @@ export class ModalExamComponent implements OnInit {
       console.log("createdAt",createdAt)
       console.log("time",this.realtime)
     });
-
+    
   }
 
 
+  @Input() exam_content : ExamContentModel ;
 
   ngOnInit() {
     this.getTaskId();

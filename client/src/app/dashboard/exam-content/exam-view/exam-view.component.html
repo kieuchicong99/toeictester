@@ -13,66 +13,64 @@
         <div class="container">
           <br>
           <form *ngFor="let item of examcontent.questions">
-            <h6>Câu hỏi {{item.question_id}} : {{item.question}}</h6>
-            <div class="row d-flex align-items-stretch">
-              <div class="col-lg-4">
-                <div class="custom-control custom-checkbox mb-3">
-                  <input type="radio" class="custom-control-input" id={{item.question_id}}1 name="example1">
-                  <label class="custom-control-label" for={{item.question_id}}1>A:
-                    {{item.choiceAnswer[0].content}}</label>
-                </div>
-              </div>
-              <div class="col-lg-4">
-                <div class="custom-control custom-checkbox mb-3">
-                  <input type="radio" class="custom-control-input" id={{item.question_id}}2 name="example1">
-                  <label class="custom-control-label" for={{item.question_id}}2>B: {{item.choiceAnswer[1].content}}
-                  </label><br>
-                </div>
-              </div>
-              <div class="col-lg-3">
-                <div class="custom-control custom-checkbox mb-3">
-                  <input type="radio" class="custom-control-input" id={{item.question_id}}3 name="example1">
-                  <label class="custom-control-label" for={{item.question_id}}3>C: {{item.choiceAnswer[2].content}}
-                  </label><br>
+            <div class="card bg-light text-dark">
+              <div class="card-body">
+                <h6>Câu hỏi {{item.id}} : {{item.content}}</h6>
+                <hr>
+                <div class="row d-flex align-items-stretch" *ngFor="let answer of item.answers">
+                  <div class="col-lg-10">
+                    <div class="custom-control custom-checkbox mb-3">
+                      <input type="radio" class="custom-control-input" id={{answer.id}} name="ex"
+                        (click)="sendOneAnswer(item.id,answer.id)">
+                      <label class="custom-control-label" for={{answer.id}}>{{answer.content}}</label>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
+            <br>
           </form>
         </div>
       </div>
     </div>
     <div class="col-lg-3">
-      <div class="card">
-        <div class="card-header d-flex">
-          <div class="col-lg-4">Bài thi số: 01 </div>
-          <div class="col-lg-4">Số lượng câu hỏi: 30</div>
-          <div class="col-lg-4">Thời gian làm bài: {{examcontent.time}}</div>
-          <h6></h6>
-        </div>
-        <div class="card-header d-flex align-items-center">jkfjkdsfksdfjskdjfkdsf </div>
-        <h3> Thời gian còn lại:</h3>
-        <div>
-          <button type="button" class="btn btn-danger">{{timeLeft}} Seconds Left....</button>
-          
+      <div class="card bg-light text-dark">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-lg-4">{{examcontent.name}}</div>
+            <div class="col-lg-8">Thời gian làm bài: {{examcontent.timedo}}</div>
+            <br>
+          </div>
+          <hr>
+          <div class="row">
+            <div class="col-lg-8">
+              <br>
+              <h5> Thời gian còn lại</h5>
+            </div>
+            <div class="col-lg-4">
+              <br>
+              <button type="button" class="btn btn-danger btn-sm align-items-center">{{timeLeft}} s</button>
+            </div>
+          </div>
+          <hr>
+
+          <div class="row">
+            <div class="col-lg-6">
+              <h5>Trạng thái</h5>
+            </div>
+            <div class="col-lg-6">
+              <button type="button" class="btn btn-danger btn-sm align-items-center">{{status}}</button>
+            </div>
+          </div>
+          <hr>
+
         </div>
       </div>
-      <div class="card-header d-flex">
-        <div class="row">
-          <div class="col-lg-3">
-            <h3>Điểm:</h3>
-            <h6>0 </h6>
-          </div>
-          <div class="col-lg-8">
-            <h3>Trạng thái:</h3>
-            <button type="button" class="btn btn-danger btn-sm">{{status}}</button>
-          </div>
-          <app-date-pipe></app-date-pipe>
-        </div>
-      </div>
+
       <div class="card-header d-flex align-items-center">
-        <!-- <button type="button" (click)="submit()" data-dismiss="modal" class="btn btn-primary">Nhấn để nộp bài</button> -->
         <div *ngIf="show; else elseBlock">
-          <button type="button" (click)="submit()" data-dismiss="modal" class="btn btn-primary">Nhấn để nộp bài</button>
+          <button type="button" (click)="submit()" data-dismiss="modal" class="btn btn-primary">Nhấn để nộp
+            bài</button>
         </div>
         <ng-template #elseBlock></ng-template>
 

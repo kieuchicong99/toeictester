@@ -4,7 +4,6 @@ import { UserListComponent } from './userlist/userlist.component';
 import { ProfileComponent } from './profile/profile.component';
 import { DashboardComponent } from './dashboard.component';
 import { ExamComponent } from './exam-content/exam.component';
-import { DatePipeComponent } from './exam-content/date-pipe/date-pipe.component';
 import { HistoryExamComponent } from './history-exam/history-exam.component';
 import { ShortExamChartComponent } from './history-exam/short-exam-chart/short-exam-chart.component';
 import { FullExamChartComponent } from './history-exam/full-exam-chart/full-exam-chart.component';
@@ -23,10 +22,10 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { CommonService } from '../common/common.service';
 import { AppRoutingModule } from '../router/router.module';
+import { ResultExamComponent } from './exam-content/result-exam/result-exam.component';
 
 @NgModule({
   imports: [
-
     CommonModule,
     BrowserModule,
     FormsModule,
@@ -39,7 +38,6 @@ import { AppRoutingModule } from '../router/router.module';
     ProfileComponent,
     DashboardComponent,
     ExamComponent,
-    DatePipeComponent,
     HistoryExamComponent,
     ShortExamChartComponent,
     FullExamChartComponent,
@@ -52,7 +50,8 @@ import { AppRoutingModule } from '../router/router.module';
     ListViewComponent,
     ExamViewComponent,
     ListViewExamedComponent,
-    ModalExamComponent],
+    ModalExamComponent,
+    ResultExamComponent],
   providers: [CommonService],
 
 })

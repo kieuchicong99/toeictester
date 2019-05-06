@@ -12,8 +12,14 @@ export class TopicComponent implements OnInit {
 
   constructor(public router: Router,public commonService: CommonService) { }
 
+  public subjects ;
   getTopic(){
-    this.topicList = this.commonService.getTopicList();
+    // this.topicList = this.commonService.getTopicList();
+    this.commonService.get_list_subjects().then(res=>{
+      this.subjects = res;
+      console.log(this.subjects);
+    })
+  
   }
   public topicList : TopicList;
 

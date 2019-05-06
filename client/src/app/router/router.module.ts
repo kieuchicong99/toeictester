@@ -11,7 +11,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { ToeicTestComponent } from '../toeic-test/toeic-test.component';
 import { ExamComponent } from '../dashboard/exam-content/exam.component';
 import { ModalExamComponent } from '../dashboard/history-exam/detail-history-exam/modal-exam/modal-exam.component';
-
+import { DetailHistoryExamComponent } from '../dashboard/history-exam/detail-history-exam/detail-history-exam.component';
+import { ResultExamComponent } from '../dashboard/exam-content/result-exam/result-exam.component';
 
 const routes: Routes = [
   { path: 'sign-in', component: SignInComponent },
@@ -23,15 +24,16 @@ const routes: Routes = [
       { path: 'user', component: UserListComponent },
       { path: 'profile', component: ProfileComponent },
       { path: 'view-id-exam', component: ExamViewComponent },
-      { path: 'view-id-examed', component: ModalExamComponent },
+      { path: 'view-id-examed', component: ResultExamComponent },
       
       {
         path: 'exam', component: ExamComponent,
-        // children: [
-        //   { path: 'view-id-exam', component: ExamViewComponent }
-        // ]
       },
-      { path: 'history', component: HistoryExamComponent },
+      { path: 'history', component: HistoryExamComponent ,children:[
+        {path: 'modal-result',component:ModalExamComponent}
+      ]},
+      { path: 'result-exam',component: ResultExamComponent },
+      
     ]
   },
   { path: 'toeic-tester-detail', component: ToeicTestComponent }

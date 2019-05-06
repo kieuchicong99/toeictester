@@ -12,9 +12,11 @@ import { HomeComponent } from './home/home.component';
 import { ToeicTestComponent } from './toeic-test/toeic-test.component';
 import { FooterComponent } from './footer/footer.component';
 import { NavComponent } from './nav/nav.component';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
+
     AppComponent,
     SignUpComponent,
     SignInComponent,
@@ -24,6 +26,7 @@ import { NavComponent } from './nav/nav.component';
     NavComponent,
   ],
   imports: [
+    CommonModule,
     BrowserModule,
     FormsModule,
     HttpModule,

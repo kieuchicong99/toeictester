@@ -9,7 +9,9 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class CardTopicComponent implements OnInit {
 
-   @Input() topic: Topic;
+  //  @Input() topic: Topic;
+  @Input() topic;
+  // @Input() subject_id;
 
   constructor(public commonService: CommonService) { }
 

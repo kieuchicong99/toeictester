@@ -4,11 +4,13 @@ import { DashboardModule } from "./dashboard/dashboard.module";
 import { AppModule } from './app.module';
 import { ChartJsComponent } from './chart-js/chart-js.component';
 import { AppComponent } from './app.component';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
     imports: [
         AppModule,
-        DashboardModule
+        DashboardModule,
+        CommonModule
     ],
     declarations: [
         ChartJsComponent

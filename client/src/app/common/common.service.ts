@@ -23,13 +23,23 @@ export class CommonService {
     localStorage.setItem('token', token);
   }
 
-  clearToken(){
+  clearToken() {
     localStorage.removeItem('token');
   }
 
-  signUp(username: string, password: string, email: string, first_name:string,last_name:string): Promise<SignUp> {
+  setTaskId(value: string){
+    localStorage.setItem('task_id', value);
+  }
+  getTaskId():string{
+    return localStorage.getItem('task_id');
+  }
+  clearTaskId() {
+    localStorage.removeItem('task_id');
+  }
+
+  signUp(username: string, password: string, email: string, first_name: string, last_name: string): Promise<SignUp> {
     return this.http
-      .post('/api/users', JSON.stringify({ username: username, password: password,first_name:first_name,last_name:last_name, email: email }), { headers: this.headers })
+      .post('/api/users', JSON.stringify({ username: username, password: password, first_name: first_name, last_name: last_name, email: email }), { headers: this.headers })
       .toPromise()
       .then(res => res.json().data as SignUp)
       .catch();
@@ -72,11 +82,11 @@ export class CommonService {
 
   }
 
-  changeProfile(first_name: string,  last_name: string, email: string, birthday: Date ):Promise<Profile>{
+  changeProfile(first_name: string, last_name: string, email: string, birthday: Date): Promise<Profile> {
     let header = new Headers();
     header.append("Authorization", this.getToken());
 
-    return this.http.put('/api/profile',JSON.stringify({ first_name: first_name, last_name: last_name, email: email, birthday: birthday }), {
+    return this.http.put('/api/profile', JSON.stringify({ first_name: first_name, last_name: last_name, email: email, birthday: birthday }), {
       headers: header
     })
       .toPromise()
@@ -86,26 +96,27 @@ export class CommonService {
       .catch();
 
   }
-  
+
   // gửi yêu cầu làm bài thi
 
-  createRequestDoExam(id_exam: string){
+  createRequestDoExam(exam_id: number) {
     let header = new Headers();
     header.append("Authorization", this.getToken());
 
-    return this.http.post('/api/yeu_cau_lam_bai_thi/:id_exam',JSON.stringify({id_exam:id_exam}), {
+    return this.http.post('/api/tasks', { exam_id }, {
       headers: header
     })
       .toPromise()
       .then(res => {
+        console.log(res.json());
         return res.json();
       })
       .catch();
 
   }
-  
+
   // lấy danh sách bài thi
-  get_danhsachbaithi(){
+  get_danhsachbaithi() {
     let header = new Headers();
     header.append("Authorization", this.getToken());
 
@@ -121,493 +132,105 @@ export class CommonService {
   }
 
   // lấy kết quả bài thi
-  get_ketquabaithi(){
+  get_result_task(task_id: number) {
 
     let header = new Headers();
     header.append("Authorization", this.getToken());
 
-    return this.http.get('/api/lay_ket_qua_bai_thi', {
+    return this.http.get("/api/tasks/"+ task_id, {
       headers: header
     })
       .toPromise()
       .then(res => {
-        return res.json().user as Profile;
+        return res.json();
       })
       .catch();
   }
 
-  // gửi đáp án bài làm
-  sendTaskToServer(){
+  get_list_subjects() {
+    let header = new Headers();
+    header.append("Authorization", this.getToken());
+
+    return this.http.get('/api/subjects', {
+      headers: header
+    })
+      .toPromise()
+      .then(res => {
+        // console.log(res.json());
+        return res.json();
+      })
+      .catch();
+  }
+
+
+  get_list_exam(subject_id) {
 
     let header = new Headers();
     header.append("Authorization", this.getToken());
 
-    return this.http.post('/api/gui_dap_an_bai_lam',JSON.stringify({}),{
+    return this.http.get('/api/subjects/' + subject_id, {
       headers: header
     })
       .toPromise()
       .then(res => {
-        return res.json().user as Profile;
+        // console.log(res.json)
+        return res.json();
       })
       .catch();
+  }
+
+  
+
+  submitExam(task_id: number) {
+    let header = new Headers();
+    header.append("Authorization", this.getToken());
+    return this.http.delete('/api/tasks/' + task_id,{
+      headers: header
+    })
+    .toPromise()
+    .then(res => {
+        console.log(res.json())
+        return res.json();
+      })
+    .catch();
+
 
   }
 
-  submitExam(){
-    
+  sendOneAnswer(question_id: number, answer_id: number, task_id: number) {
+    let header = new Headers();
+    header.append("Authorization", this.getToken());
+    let url = "/api/tasks/"+ task_id;
+    this.http.put(url, { question_id, answer_id }, {
+      headers: header
+    })
+      .toPromise()
+      .then(
+        res => {
+          return res.json()
+        })
+      .catch()
   }
-  getTopicList() {
-    this.topicList = {
-      topics: [
-        { name_topic: "Đọc đoạn hội thoại", count_exam: "100", count_examed: "20" },
-        { name_topic: "Hỏi đáp", count_exam: "10", count_examed: "0" },
-        { name_topic: "Bài nói chuyện", count_exam: "20", count_examed: "7" },
-        { name_topic: "Câu không hoàn thành", count_exam: "100", count_examed: "40" },
-        { name_topic: "Hoàn thành đoạn văn", count_exam: "10", count_examed: "5" },
-        { name_topic: "Đọc hiểu", count_exam: "110", count_examed: "50" }
-      ]
-    }
-    return this.topicList;
-  }
+
+ 
   getExamedOfTopicList() {
-    this.examedList = [
-      { id: "exam1", name_exam: "Bài thi số 1", time: "180", num_questions: "30", point: "50" },
-      { id: "exam2", name_exam: "Bài thi số 2", time: "180", num_questions: "30", point: "50" },
-      { id: "exam3", name_exam: "Bài thi số 3", time: "180", num_questions: "30", point: "50" },
-      { id: "exam4", name_exam: "Bài thi số 4", time: "180", num_questions: "30", point: "50" },
-      { id: "exam5", name_exam: "Bài thi số 5", time: "180", num_questions: "30", point: "50" },
-      { id: "exam6", name_exam: "Bài thi số 6", time: "180", num_questions: "30", point: "50" },
-      { id: "exam7", name_exam: "Bài thi số 7", time: "180", num_questions: "30", point: "50" },
-      { id: "exam8", name_exam: "Bài thi số 8", time: "180", num_questions: "30", point: "50" },
-      { id: "exam9", name_exam: "Bài thi số 9", time: "180", num_questions: "30", point: "50" },
-      { id: "exam10", name_exam: "Bài thi số 10", time: "180", num_questions: "30", point: "50" },
-      { id: "exam11", name_exam: "Bài thi số 11", time: "180", num_questions: "30", point: "50" },
-      { id: "exam12", name_exam: "Bài thi số 12", time: "180", num_questions: "30", point: "50" },
-      { id: "exam13", name_exam: "Bài thi số 13", time: "180", num_questions: "30", point: "50" },
-      { id: "exam14", name_exam: "Bài thi số 14", time: "180", num_questions: "30", point: "50" },
-      { id: "exam15", name_exam: "Bài thi số 15", time: "180", num_questions: "30", point: "50" },
-      { id: "exam16", name_exam: "Bài thi số 16", time: "180", num_questions: "30", point: "50" },
-      { id: "exam17", name_exam: "Bài thi số 17", time: "180", num_questions: "30", point: "50" },
-      { id: "exam18", name_exam: "Bài thi số 18", time: "180", num_questions: "30", point: "50" },
-      { id: "exam19", name_exam: "Bài thi số 19", time: "180", num_questions: "30", point: "50" },
-      { id: "exam20", name_exam: "Bài thi số 20", time: "180", num_questions: "30", point: "50" },
-      { id: "exam21", name_exam: "Bài thi số 21", time: "180", num_questions: "30", point: "50" },
-      { id: "exam22", name_exam: "Bài thi số 22", time: "180", num_questions: "30", point: "50" },
-      { id: "exam23", name_exam: "Bài thi số 23", time: "180", num_questions: "30", point: "50" },
-      { id: "exam24", name_exam: "Bài thi số 24", time: "180", num_questions: "30", point: "50" },
-      { id: "exam25", name_exam: "Bài thi số 25", time: "180", num_questions: "30", point: "50" },
-      { id: "exam26", name_exam: "Bài thi số 26", time: "180", num_questions: "30", point: "50" },
-    ]
+    
     return this.examedList;
   }
 
-  getExamsOfTopicList() {
-    this.examList = [
-      { id: "exam1", name_exam: "Bài thi số 1", time: "180", num_questions: "30" },
-      { id: "exam2", name_exam: "Bài thi số 2", time: "180", num_questions: "30" },
-      { id: "exam3", name_exam: "Bài thi số 3", time: "180", num_questions: "30" },
-      { id: "exam4", name_exam: "Bài thi số 4", time: "180", num_questions: "30" },
-      { id: "exam5", name_exam: "Bài thi số 5", time: "180", num_questions: "30" },
-      { id: "exam6", name_exam: "Bài thi số 6", time: "180", num_questions: "30" },
-      { id: "exam7", name_exam: "Bài thi số 7", time: "180", num_questions: "30" },
-      { id: "exam8", name_exam: "Bài thi số 8", time: "180", num_questions: "30" },
-      { id: "exam9", name_exam: "Bài thi số 9", time: "180", num_questions: "30" },
-      { id: "exam10", name_exam: "Bài thi số 10", time: "180", num_questions: "30" },
-      { id: "exam11", name_exam: "Bài thi số 11", time: "180", num_questions: "30" },
-      { id: "exam12", name_exam: "Bài thi số 12", time: "180", num_questions: "30" },
-      { id: "exam13", name_exam: "Bài thi số 13", time: "180", num_questions: "30" },
-      { id: "exam14", name_exam: "Bài thi số 14", time: "180", num_questions: "30" },
-      { id: "exam15", name_exam: "Bài thi số 15", time: "180", num_questions: "30" },
-      { id: "exam16", name_exam: "Bài thi số 16", time: "180", num_questions: "30" },
-      { id: "exam17", name_exam: "Bài thi số 17", time: "180", num_questions: "30" },
-      { id: "exam18", name_exam: "Bài thi số 18", time: "180", num_questions: "30" },
-      { id: "exam19", name_exam: "Bài thi số 19", time: "180", num_questions: "30" },
-      { id: "exam20", name_exam: "Bài thi số 20", time: "180", num_questions: "30" },
-      { id: "exam21", name_exam: "Bài thi số 21", time: "180", num_questions: "30" },
-      { id: "exam22", name_exam: "Bài thi số 22", time: "180", num_questions: "30" },
-      { id: "exam23", name_exam: "Bài thi số 23", time: "180", num_questions: "30" },
-      { id: "exam24", name_exam: "Bài thi số 24", time: "180", num_questions: "30" },
-      { id: "exam25", name_exam: "Bài thi số 25", time: "180", num_questions: "30" },
-      { id: "exam26", name_exam: "Bài thi số 26", time: "180", num_questions: "30" },
-    ]
-    return this.examList;
-  }
+  
+  getExamContentResult() {   
+   
+    let header = new Headers();
+    header.append("Authorization", this.getToken());
 
-  getExamContentResult() {
-    this.examcontent = {
-      id: "dasjdhasdksjkjbdsjk",
-      time: 180,
-      name: "SE-1",
-      questions: [
-        {
-          question: "Some visitors to Dubrovik feel that it is too ____ with tourists to be enjoyable during the summer",
-          question_id: "1",
-          choiceAnswer: [
-            {
-              opt: "A",
-              content: "crowd",
-              formtype: "String"
-            },
-            {
-              opt: "B",
-              content: "crowds",
-              formtype: "String"
-            },
-            {
-              opt: "C",
-              content: "crowding",
-              formtype: "String"
-            },
-            {
-              opt: "D",
-              content: "crowded",
-              formtype: "String"
-            }
-          ]
-        },
-        {
-          question: "Some visitors to Dubrovik feel that it is too ____ with tourists to be enjoyable during the summer",
-          question_id: "2",
-          choiceAnswer: [
-            {
-              opt: "B",
-              content: "I am fine",
-              formtype: "String"
-            },
-            {
-              opt: "B",
-              content: "I am fine",
-              formtype: "String"
-            },
-            {
-              opt: "B",
-              content: "I am fine",
-              formtype: "String"
-            },
-            {
-              opt: "B",
-              content: "I am fine",
-              formtype: "String"
-            }
-          ]
-        },
-        {
-          question: "Some visitors to Dubrovik feel that it is too ____ with tourists to be enjoyable during the summer",
-          question_id: "3",
-          choiceAnswer: [
-            {
-              opt: "B",
-              content: "I am fine",
-              formtype: "String"
-            },
-            {
-              opt: "B",
-              content: "I am fine",
-              formtype: "String"
-            },
-            {
-              opt: "B",
-              content: "I am fine",
-              formtype: "String"
-            },
-            {
-              opt: "B",
-              content: "I am fine",
-              formtype: "String"
-            }
-          ]
-        },
-        {
-          question: "Some visitors to Dubrovik feel that it is too ____ with tourists to be enjoyable during the summer",
-          question_id: "4",
-          choiceAnswer: [
-            {
-              opt: "B",
-              content: "I am fine",
-              formtype: "String"
-            },
-            {
-              opt: "B",
-              content: "I am fine",
-              formtype: "String"
-            },
-            {
-              opt: "B",
-              content: "I am fine",
-              formtype: "String"
-            },
-            {
-              opt: "B",
-              content: "I am fine",
-              formtype: "String"
-            }
-          ]
-        },
-        {
-          question: "Some visitors to Dubrovik feel that it is too ____ with tourists to be enjoyable during the summer",
-          question_id: "5",
-          choiceAnswer: [
-            {
-              opt: "B",
-              content: "I am fine",
-              formtype: "String"
-            },
-            {
-              opt: "B",
-              content: "I am fine",
-              formtype: "String"
-            },
-            {
-              opt: "B",
-              content: "I am fine",
-              formtype: "String"
-            },
-            {
-              opt: "B",
-              content: "I am fine",
-              formtype: "String"
-            }
-          ]
-        },
-        {
-          question: "Some visitors to Dubrovik feel that it is too ____ with tourists to be enjoyable during the summer",
-          question_id: "6",
-          choiceAnswer: [
-            {
-              opt: "B",
-              content: "I am fine",
-              formtype: "String"
-            },
-            {
-              opt: "B",
-              content: "I am fine",
-              formtype: "String"
-            },
-            {
-              opt: "B",
-              content: "I am fine",
-              formtype: "String"
-            },
-            {
-              opt: "B",
-              content: "I am fine",
-              formtype: "String"
-            }
-          ]
-        },
-        {
-          question: "Some visitors to Dubrovik feel that it is too ____ with tourists to be enjoyable during the summer",
-          question_id: "7",
-          choiceAnswer: [
-            {
-              opt: "B",
-              content: "I am fine",
-              formtype: "String"
-            },
-            {
-              opt: "B",
-              content: "I am fine",
-              formtype: "String"
-            },
-            {
-              opt: "B",
-              content: "I am fine",
-              formtype: "String"
-            },
-            {
-              opt: "B",
-              content: "I am fine",
-              formtype: "String"
-            }
-          ]
-        },
-        {
-          question: "Some visitors to Dubrovik feel that it is too ____ with tourists to be enjoyable during the summer",
-          question_id: "8",
-          choiceAnswer: [
-            {
-              opt: "B",
-              content: "I am fine",
-              formtype: "String"
-            },
-            {
-              opt: "B",
-              content: "I am fine",
-              formtype: "String"
-            },
-            {
-              opt: "B",
-              content: "I am fine",
-              formtype: "String"
-            },
-            {
-              opt: "B",
-              content: "I am fine",
-              formtype: "String"
-            }
-          ]
-        },
-        {
-          question: "Some visitors to Dubrovik feel that it is too ____ with tourists to be enjoyable during the summer",
-          question_id: "9",
-          choiceAnswer: [
-            {
-              opt: "B",
-              content: "I am fine",
-              formtype: "String"
-            },
-            {
-              opt: "B",
-              content: "I am fine",
-              formtype: "String"
-            },
-            {
-              opt: "B",
-              content: "I am fine",
-              formtype: "String"
-            },
-            {
-              opt: "B",
-              content: "I am fine",
-              formtype: "String"
-            }
-          ]
-        },
-        {
-          question: "Some visitors to Dubrovik feel that it is too ____ with tourists to be enjoyable during the summer",
-          question_id: "10",
-          choiceAnswer: [
-            {
-              opt: "B",
-              content: "I am fine",
-              formtype: "String"
-            },
-            {
-              opt: "B",
-              content: "I am fine",
-              formtype: "String"
-            },
-            {
-              opt: "B",
-              content: "I am fine",
-              formtype: "String"
-            },
-            {
-              opt: "B",
-              content: "I am fine",
-              formtype: "String"
-            }
-          ]
-        },
-        {
-          question: "Some visitors to Dubrovik feel that it is too ____ with tourists to be enjoyable during the summer",
-          question_id: "11",
-          choiceAnswer: [
-            {
-              opt: "B",
-              content: "I am fine",
-              formtype: "String"
-            },
-            {
-              opt: "B",
-              content: "I am fine",
-              formtype: "String"
-            },
-            {
-              opt: "B",
-              content: "I am fine",
-              formtype: "String"
-            },
-            {
-              opt: "B",
-              content: "I am fine",
-              formtype: "String"
-            }
-          ]
-        },
-        {
-          question: "Some visitors to Dubrovik feel that it is too ____ with tourists to be enjoyable during the summer",
-          question_id: "12",
-          choiceAnswer: [
-            {
-              opt: "B",
-              content: "I am fine",
-              formtype: "String"
-            },
-            {
-              opt: "B",
-              content: "I am fine",
-              formtype: "String"
-            },
-            {
-              opt: "B",
-              content: "I am fine",
-              formtype: "String"
-            },
-            {
-              opt: "B",
-              content: "I am fine",
-              formtype: "String"
-            }
-          ]
-        },
-        {
-          question: "Some visitors to Dubrovik feel that it is too ____ with tourists to be enjoyable during the summer",
-          question_id: "13",
-          choiceAnswer: [
-            {
-              opt: "B",
-              content: "I am fine",
-              formtype: "String"
-            },
-            {
-              opt: "B",
-              content: "I am fine",
-              formtype: "String"
-            },
-            {
-              opt: "B",
-              content: "I am fine",
-              formtype: "String"
-            },
-            {
-              opt: "B",
-              content: "I am fine",
-              formtype: "String"
-            }
-          ]
-        },
-        {
-          question: "Some visitors to Dubrovik feel that it is too ____ with tourists to be enjoyable during the summer",
-          question_id: "14",
-          choiceAnswer: [
-            {
-              opt: "B",
-              content: "I am fine",
-              formtype: "String"
-            },
-            {
-              opt: "B",
-              content: "I am fine",
-              formtype: "String"
-            },
-            {
-              opt: "B",
-              content: "I am fine",
-              formtype: "String"
-            },
-            {
-              opt: "B",
-              content: "I am fine",
-              formtype: "String"
-            }
-          ]
-        }
-
-
-      ]
-
-    };
-    return this.examcontent;
+    return this.http.get("/api/tasks/", {
+      headers: header
+    })
+      .toPromise()
+      .then(res => {
+        return res.json();
+      })
+      .catch();
   }
 }

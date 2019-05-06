@@ -1,77 +1,135 @@
-<!-- The Modal -->
-<div class="modal fade" id="myModal">
-  <div class="modal-dialog modal-xl">
-    <div class="modal-content">
+<!-- <button type="button" class=" btn btn-primary btn-sm" data-toggle="modal" data-target="#mymodal"></button> -->
 
-      <!-- Modal Header -->
-      <div class="modal-header">
-        <h4 class="modal-title"></h4>
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-      </div>
-      <!-- Modal body -->
-      <div class="row">
-        <div class="col-lg-9">
+  <!-- The Modal -->
+  <div class="modal fade" id=" mymodal">
+      <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+
+          <!-- Modal Header -->
           <div class="modal-header">
-            <h4 class="modal-title">Đề thi</h4>
-          </div><br>
+            <h4 class="modal-title"></h4>
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
 
-          <div class="card">
-            <div class="container">
-              <form *ngFor="let item of exam_content.questions">
-                <h5>Câu hỏi {{item.question_id}} : {{item.question}}</h5>
-                <div class="row d-flex align-items-stretch">
-                  <div class="col-lg-4">
-                    <div>
-                      A: {{item.choiceAnswer[0].content}}
-                    </div>
-                  </div>
-                  <div class="col-lg-4">
-                    <div>
-                      B: {{item.choiceAnswer[1].content}}
-                    </div>
-                  </div>
-                  <div class="col-lg-3">
-                    <div>
-                      C: {{item.choiceAnswer[2].content}}
+          <div>
+              <br>
+              <br>
+              <div class="row">
+                <div class="col-lg-2">
+                  <div class="card">
+                    <div class="card-header d-flex align-items-center">
                     </div>
                   </div>
                 </div>
-              </form>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-3">
+                <div class="col-lg-7">
+                  <div class="card examcustom">
+                    <div class="container">
+                      <br>
+                      <form *ngFor="let item of result.exam.questions">
+                        <div class="card bg-light text-dark">
+                          <div class="card-body">
+                            <h6>Câu hỏi {{item.id}} : {{item.content}}</h6>
+                            <hr>
+                            <i *ngIf="!item.tasks.length" style="color: rgb(229, 149, 149)"> Chưa có câu trả lời </i>
+                            <div class="row d-flex align-items-stretch" *ngFor="let answer of item.answers">
+                              <div class="col-lg-10">
+                                <div class="custom-control custom-checkbox mb-3">
+                                  <div>
 
-          <div class="modal-header">
-            <h4 class="modal-title">Kết quả</h4>
-          </div><br>
-          <div class="card">
-            <div class="container">
-              <form *ngFor="let item of exam_content.questions">
-                <h5>Câu hỏi {{item.question_id}}</h5>
-                <div class="row d-flex align-items-stretch">
-                  <div class="col-lg-6">
-                    <div>
-                      Đáp án của bạn: A
-                    </div>
-                  </div>
-                  <div class="col-lg-6">
-                    <div>
-                      Đáp án đúng: A
+                                    <!-- nếu đáp án đang xét là đáp án đúng và người chơi chưa chọn đáp án-->
+                                    <div *ngIf="answer.question_answer.right == true && !item.tasks.length">
+                                      <div style="color: rgba(42, 226, 149, 0.74)">{{answer.content}}</div>
+                                    </div>
+
+                                    <!-- nếu đáp án đang xét là đáp án đúng và đáp án của người chơi khác đáp án này -->
+                                    <div
+                                      *ngIf="answer.question_answer.right == true && ( item.tasks.length&&item.tasks[0].taskExamQuestion.answer_id!=answer.id)">
+                                      <div style="color: rgba(42, 226, 149, 0.74)">{{answer.content}}</div>
+                                    </div>
+
+                                    <!-- nếu đáp án đang xét là đáp án đúng và đáp án của người chơi trùng với đáp án này -->
+                                    <div
+                                      *ngIf="answer.question_answer.right == true && item.tasks.length&&item.tasks[0].taskExamQuestion.answer_id==answer.id">
+                                      <input type="radio" class="custom-control-input" id={{answer.id}} name="ex" checked="">
+                                      <label class="custom-control-label" for={{answer.id}}
+                                        style="color: rgba(42, 226, 149, 0.74)">{{answer.content}} </label>
+                                    </div>
+
+                                    <!-- nếu đáp án đang xét là đáp án sai và người chơi ko chọn đáp án -->
+                                    <div *ngIf="answer.question_answer.right == false && !item.tasks.length">
+                                      <div>{{answer.content}}</div>
+                                    </div>
+
+                                    <!-- nếu đáp án đang xét là đáp án sai và đáp án của người chơi khác đáp án này -->
+                                    <div
+                                      *ngIf="answer.question_answer.right == false && (item.tasks.length&&item.tasks[0].taskExamQuestion.answer_id!=answer.id)">
+                                      <div>{{answer.content}}</div>
+                                    </div>
+
+                                    <!-- nếu đáp án đang xét là đáp án sai và đáp án của người chơi trùng với đáp án này -->
+                                    <div
+                                      *ngIf="answer.question_answer.right == false && item.tasks.length&&item.tasks[0].taskExamQuestion.answer_id==answer.id">
+                                      <div style="color: rgb(229, 149, 149)">{{answer.content}}</div>
+                                    </div>
+
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <br>
+                      </form>
                     </div>
                   </div>
                 </div>
-              </form>
+                <div class="col-lg-3">
+                  <div class="card">
+                    <div class="card-header center">
+                      Kết quả bài thi
+                    </div>
+                    <div class="card-body">
+
+                      <div class="row bg-light text-dark">
+                        <div class="col-lg-6">Số câu đúng</div>
+                        <div class="col-lg-6">
+                          <button type = "button" class="btn btn-primary btn-sm"> {{result.score}} / {{result.exam.questions.length}}</button>
+                        </div>
+                      </div>
+                      <br>
+                      <div class="row bg-light text-dark">
+                        <div class="col-lg-6">Thực hiện</div>
+                        <div class="col-lg-6">
+                          <button type="button" class="btn btn-success btn-sm">{{realtime.getMinutes()}} phút
+                            {{realtime.getSeconds()}} giây</button>
+                        </div>
+                      </div>
+                      <br>
+                      <!-- <div class="row bg-light text-dark">
+                        <div class="col-lg-6">Số câu chưa làm</div>
+                        <div class="col-lg-6"></div>
+                      </div> -->
+                      <!-- <br> -->
+                      <div class="row bg-light text-dark">
+                        <div class="col-lg-6">Điểm số</div>
+                        <div class="col-lg-6">
+                          <button type = "button" class="btn  btn-success btn-sm">{{result.score}} / {{result.exam.questions.length}}</button>
+                        </div>
+                      </div>
+
+                    </div>
+
+                  </div>
+                </div>
+              </div>
             </div>
+
+          <!-- Modal footer -->
+          <div class="modal-footer">
+            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
           </div>
+
         </div>
       </div>
-
-      <!-- Modal footer -->
-      <div class="modal-footer">
-        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-      </div>
-
     </div>
-  </div>
-</div>
+
