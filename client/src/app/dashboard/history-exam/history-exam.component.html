@@ -48,16 +48,16 @@
               </div>
             </div>
             <div class="row">
-              <div class="col-lg-2">
-                <!-- <h1><button type="button" class="btn btn-success">Xem lịch sử</button><br></h1>
+              <!-- <div class="col-lg-2">
+                <h1><button type="button" class="btn btn-success">Xem lịch sử</button><br></h1>
                 <h5>Lựa chọn</h5>
                 <div class="card">
                   <app-option-menu></app-option-menu>
                   <br>
                   <app-option-menu1></app-option-menu1>
-                </div> -->
-              </div>
-              <div class="col-lg-10">
+                </div>
+              </div> -->
+              <div class="col-lg-12">
                 <div class="card">
                   <div class="card-header d-flex align-items-center">
                     <h2 class="h5 display">Danh sách lịch sử thi</h2>
@@ -70,7 +70,6 @@
                           <th>Chủ đề</th>
                           <th>Tên bài thi</th>
                           <th>Thời gian</th>
-                          <!-- <th>Thời gian nộp bài</th> -->
                           <th>Điểm</th>
                           <th>Ngày làm bài</th>
                           <th>Chi tiết</th>
@@ -82,15 +81,11 @@
                           <td>{{item.exam.subject.name}}</td>
                           <td>{{item.exam.name}}</td>
                           <td>{{item.exam.timedo}}</td>
-                          <!-- <td>{{item.time_real}}</td> -->
                           <td>{{item.score}}</td>
                           <td>{{item.createdAt}}</td>
                           <td>
-                            <!-- <app-detail-history-exam [task_id]="item.id"></app-detail-history-exam> -->
-                            <!-- <button type="button" class=" btn btn-primary btn-sm" data-toggle="modal" data-target="#mymodal">abcxyz</button> -->
-                            <a href="#">{{item.id}}</a>
+                            <app-detail-history-exam [task_id]="item.id"></app-detail-history-exam>
                           </td>
-                          <router-outlet></router-outlet>
                         </tr>
                       </tbody>
                     </table>

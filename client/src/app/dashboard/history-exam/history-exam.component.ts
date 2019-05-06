@@ -12,11 +12,11 @@ export class HistoryExamComponent implements OnInit {
 
 
   public historyList;
+
   getHistoryList(){
     this.commonService.getExamContentResult().then(res=>{
-      this.historyList = res;
+      return this.historyList = res;
     });
-
   }
 
   constructor(private commonService: CommonService, private router : Router) { }

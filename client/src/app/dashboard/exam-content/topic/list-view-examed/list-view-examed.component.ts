@@ -16,7 +16,7 @@ export class ListViewExamedComponent implements OnInit {
   @Input() name:string;
 
   getExamedOfTopic(){
-    this.examedList = this.commonService.getExamedOfTopicList();
+    // this.examedList = this.commonService.getExamedOfTopicList();
   }
   showHistoryViewOfExamed():void{
     this.router.navigate(['/dashboard/view-id-examed'])

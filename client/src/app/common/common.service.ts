@@ -1,11 +1,7 @@
-import { ExamList, ExamedList } from '../dashboard/exam-content/topic/list-view/list-view.model';
-import { TopicList } from '../dashboard/exam-content/card-topic/topic.model';
-import { ExamContentModel } from '../dashboard/exam-content/exam.content.model';
 import { SignUp, Login, Profile } from '../signup/signUp.model';
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs/Subject';
 import { Headers, Http } from '@angular/http';
-import { EmailValidator } from '@angular/forms';
 
 @Injectable()
 export class CommonService {
@@ -57,11 +53,6 @@ export class CommonService {
 
   }
 
-  public userList: SignUp[];
-  public examcontent: ExamContentModel;
-  public topicList: TopicList;
-  public examList: Array<ExamList>;
-  public examedList: Array<ExamedList>;
 
   getAllUser() {
     return this.http.get('/api/get-all-user', {})
@@ -115,22 +106,6 @@ export class CommonService {
 
   }
 
-  // lấy danh sách bài thi
-  get_danhsachbaithi() {
-    let header = new Headers();
-    header.append("Authorization", this.getToken());
-
-    return this.http.get('/api/lay_danh_sach_bai_thi', {
-      headers: header
-    })
-      .toPromise()
-      .then(res => {
-        return res.json().user as Profile;
-      })
-      .catch();
-
-  }
-
   // lấy kết quả bài thi
   get_result_task(task_id: number) {
 
@@ -179,7 +154,7 @@ export class CommonService {
       .catch();
   }
 
-  
+
 
   submitExam(task_id: number) {
     let header = new Headers();
@@ -212,15 +187,14 @@ export class CommonService {
       .catch()
   }
 
- 
+
   getExamedOfTopicList() {
-    
-    return this.examedList;
+
   }
 
-  
-  getExamContentResult() {   
-   
+
+  getExamContentResult() {
+
     let header = new Headers();
     header.append("Authorization", this.getToken());
 
